@@ -12,13 +12,18 @@ import org.openqa.selenium.WebDriver;
 public class MenuScreen extends MenuScreenBase{
     @ExtendedFindBy(iosPredicate = "name == \"QrCodeScanner-menu-item\"")
     private ExtendedWebElement qrCodeBtn;
+
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`name == \"About-menu-item\"`]")
+    private ExtendedWebElement aboutButton;
+
     public MenuScreen(WebDriver driver) {
         super(driver);
     }
 
     @Override
     public AboutAppScreenBase clickOnAboutButton() {
-        return null;
+       aboutButton.click();
+        return initPage(getDriver(), AboutAppScreenBase.class);
     }
 
     @Override
