@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE,parentClass = MenuScreenBase.class)
 public class MenuScreen extends MenuScreenBase {
-    @FindBy(xpath = "//*[@resource-id='com.saucelabs.mydemoapp.android:id/itemTV']")
+    @FindBy(xpath = "//*[@text='About']")
     private ExtendedWebElement aboutButton;
     public MenuScreen(WebDriver driver) {
         super(driver);
