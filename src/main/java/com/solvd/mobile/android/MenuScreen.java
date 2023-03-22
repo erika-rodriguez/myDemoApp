@@ -4,6 +4,7 @@ package com.solvd.mobile.android;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.solvd.mobile.common.AboutAppScreenBase;
 import com.solvd.mobile.common.MenuScreenBase;
+import com.solvd.mobile.common.QRCodeScreenBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -12,6 +13,10 @@ import org.openqa.selenium.support.FindBy;
 public class MenuScreen extends MenuScreenBase {
     @FindBy(xpath = "//*[@text='About']")
     private ExtendedWebElement aboutButton;
+
+    @FindBy(xpath = "//*[@text='QR Code Scanner']")
+    private ExtendedWebElement qrCodeBtn;
+
     public MenuScreen(WebDriver driver) {
         super(driver);
     }
@@ -21,6 +26,11 @@ public class MenuScreen extends MenuScreenBase {
         aboutButton.click();
         return initPage(getDriver(), AboutAppScreenBase.class);
 
+    }
+    @Override
+    public QRCodeScreenBase clickOnQRCodeButton() {
+        qrCodeBtn.click();
+        return initPage(getDriver(), QRCodeScreenBase.class);
     }
 
 }

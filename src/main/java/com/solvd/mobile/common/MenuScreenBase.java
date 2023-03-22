@@ -8,4 +8,5 @@ public abstract class MenuScreenBase extends AbstractPage {
         super(driver);
     }
     public abstract AboutAppScreenBase clickOnAboutButton();
+    public abstract QRCodeScreenBase clickOnQRCodeButton();
 }
