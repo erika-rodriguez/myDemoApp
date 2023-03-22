@@ -1,4 +1,4 @@
 package com.solvd.mobile.iOS;
 
-public class Home {
+public class MenuPage {
 }

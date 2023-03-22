@@ -1,4 +1,4 @@
 package com.solvd.mobile.android;
 
-public class Home {
+public class MenuPage {
 }

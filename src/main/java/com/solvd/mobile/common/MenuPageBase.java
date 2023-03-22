@@ -1,4 +1,4 @@
 package com.solvd.mobile.common;
 
-public class Utils {
+public class MenuPageBase {
 }
