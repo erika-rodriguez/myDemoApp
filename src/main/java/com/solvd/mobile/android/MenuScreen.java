@@ -14,9 +14,10 @@ import org.openqa.selenium.support.FindBy;
 public class MenuScreen extends MenuScreenBase {
     @FindBy(xpath = "//*[@text='About']")
     private ExtendedWebElement aboutButton;
-
     @FindBy(xpath = "//*[@text='QR Code Scanner']")
     private ExtendedWebElement qrCodeBtn;
+    @FindBy(xpath = "//*[@text='Geo Location']")
+    private ExtendedWebElement geoLocationBtn;
 
     public MenuScreen(WebDriver driver) {
         super(driver);
@@ -36,7 +37,8 @@ public class MenuScreen extends MenuScreenBase {
 
     @Override
     public GeoLocationScreenBase clickOnGeoLocationButton() {
-        return null;
+        geoLocationBtn.click();
+        return initPage(getDriver(), GeoLocationScreenBase.class);
     }
 
 }
