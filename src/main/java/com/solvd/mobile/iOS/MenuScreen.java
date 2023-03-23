@@ -40,6 +40,11 @@ public class MenuScreen extends MenuScreenBase{
     }
 
     @Override
+    public BiometricAlertScreenBase clickOnFingerPrintButton() {
+        return null;
+    }
+    
+    @Override
     public WebViewScreenBase clickOnWebViewButton() {
         webViewBtn.click();
         return initPage(getDriver(), WebViewScreenBase.class);

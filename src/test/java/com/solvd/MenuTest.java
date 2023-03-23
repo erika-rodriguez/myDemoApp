@@ -42,5 +42,14 @@ public class MenuTest implements IAbstractTest {
         Assert.assertTrue(webView.isWebViewTxtPresent(), "The WebView screen is not opened");
     }
 
+    @Test(description = "[TC04]-testFaceIdButton")
+    public void testFingerPrintButton() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        MenuScreenBase menu = catalog.clickOnMenu();
+        BiometricAlertScreenBase alert = menu.clickOnFingerPrintButton();
+        FingerPrintScreenBase fingerPrint = alert.clickOnOkButton();
+
+        Assert.assertTrue(fingerPrint.isFingerPrintTextPresent(),"The FingerPrint button does not work");
+    }
 
 }
