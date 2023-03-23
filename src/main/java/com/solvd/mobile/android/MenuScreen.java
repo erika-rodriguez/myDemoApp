@@ -17,7 +17,8 @@ public class MenuScreen extends MenuScreenBase {
     private ExtendedWebElement geoLocationBtn;
     @FindBy(xpath = "//*[@text='FingerPrint']")
     private ExtendedWebElement fingerPrintButton;
-
+    @FindBy(xpath = "//*[@text='WebView']")
+    private ExtendedWebElement webViewBtn;
 
     public MenuScreen(WebDriver driver) {
         super(driver);
@@ -45,6 +46,12 @@ public class MenuScreen extends MenuScreenBase {
     public BiometricAlertScreenBase clickOnFingerPrintButton() {
        fingerPrintButton.click();
         return initPage(getDriver(), BiometricAlertScreenBase.class);
+    }
+    
+    @Override
+    public WebViewScreenBase clickOnWebViewButton() {
+        webViewBtn.click();
+        return initPage(getDriver(), WebViewScreenBase.class);
     }
 
 }

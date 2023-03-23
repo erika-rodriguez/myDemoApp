@@ -10,12 +10,12 @@ import org.openqa.selenium.WebDriver;
 public class MenuScreen extends MenuScreenBase{
     @ExtendedFindBy(iosPredicate = "name == \"QrCodeScanner-menu-item\"")
     private ExtendedWebElement qrCodeBtn;
-
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`name == \"About-menu-item\"`]")
     private ExtendedWebElement aboutButton;
-
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`name == \"GeoLocation-menu-item\"`]")
     private ExtendedWebElement geoLocationBtn;
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`name == \"Webview-menu-item\"`]")
+    private ExtendedWebElement webViewBtn;
 
     public MenuScreen(WebDriver driver) {
         super(driver);
@@ -42,5 +42,11 @@ public class MenuScreen extends MenuScreenBase{
     @Override
     public BiometricAlertScreenBase clickOnFingerPrintButton() {
         return null;
+    }
+    
+    @Override
+    public WebViewScreenBase clickOnWebViewButton() {
+        webViewBtn.click();
+        return initPage(getDriver(), WebViewScreenBase.class);
     }
 }
