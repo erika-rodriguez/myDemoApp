@@ -35,7 +35,7 @@ public class MenuTest implements IAbstractTest {
     }
 
     @Test(description = "[TC04]-testFaceIdButton")
-    public void testFaceIdButton() {
+    public void testFingerPrintButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
         MenuScreenBase menu = catalog.clickOnMenu();
         BiometricAlertScreenBase alert = menu.clickOnFingerPrintButton();
