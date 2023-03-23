@@ -52,4 +52,13 @@ public class MenuTest implements IAbstractTest {
         Assert.assertTrue(fingerPrint.isFingerPrintTextPresent(),"The FingerPrint button does not work");
     }
 
+    @Test(description = "[TC06]-testDrawingButton")
+    public void testDrawingButton() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        MenuScreenBase menu = catalog.clickOnMenu();
+        DrawingScreenBase drawing = menu.clickOnDrawingButton();
+
+        Assert.assertTrue(drawing.isDrawingTxtPresent(),"The Drawing button does not work");
+    }
+
 }

@@ -19,6 +19,9 @@ public class MenuScreen extends MenuScreenBase {
     private ExtendedWebElement fingerPrintButton;
     @FindBy(xpath = "//*[@text='WebView']")
     private ExtendedWebElement webViewBtn;
+    @FindBy(xpath = "//*[@text='Drawing']")
+    private ExtendedWebElement drawingBtn;
+
 
     public MenuScreen(WebDriver driver) {
         super(driver);
@@ -52,6 +55,12 @@ public class MenuScreen extends MenuScreenBase {
     public WebViewScreenBase clickOnWebViewButton() {
         webViewBtn.click();
         return initPage(getDriver(), WebViewScreenBase.class);
+    }
+
+    @Override
+    public DrawingScreenBase clickOnDrawingButton() {
+        drawingBtn.click();
+        return initPage(getDriver(), DrawingScreenBase.class);
     }
 
 }
