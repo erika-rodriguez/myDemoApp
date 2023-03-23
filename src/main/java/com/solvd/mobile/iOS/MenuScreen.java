@@ -2,10 +2,7 @@ package com.solvd.mobile.iOS;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.foundation.webdriver.locator.ExtendedFindBy;
-import com.solvd.mobile.common.AboutAppScreenBase;
-import com.solvd.mobile.common.GeoLocationScreenBase;
-import com.solvd.mobile.common.MenuScreenBase;
-import com.solvd.mobile.common.QRCodeScreenBase;
+import com.solvd.mobile.common.*;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 
@@ -13,12 +10,12 @@ import org.openqa.selenium.WebDriver;
 public class MenuScreen extends MenuScreenBase{
     @ExtendedFindBy(iosPredicate = "name == \"QrCodeScanner-menu-item\"")
     private ExtendedWebElement qrCodeBtn;
-
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`name == \"About-menu-item\"`]")
     private ExtendedWebElement aboutButton;
-
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`name == \"GeoLocation-menu-item\"`]")
     private ExtendedWebElement geoLocationBtn;
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`name == \"Webview-menu-item\"`]")
+    private ExtendedWebElement webViewBtn;
 
     public MenuScreen(WebDriver driver) {
         super(driver);
@@ -40,5 +37,11 @@ public class MenuScreen extends MenuScreenBase{
     public GeoLocationScreenBase clickOnGeoLocationButton() {
         geoLocationBtn.click();
         return initPage(getDriver(), GeoLocationScreenBase.class);
+    }
+
+    @Override
+    public WebViewScreenBase clickOnWebViewButton() {
+        webViewBtn.click();
+        return initPage(getDriver(), WebViewScreenBase.class);
     }
 }
