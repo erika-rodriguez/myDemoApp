@@ -1,10 +1,7 @@
 package com.solvd;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
-import com.solvd.mobile.common.AboutAppScreenBase;
-import com.solvd.mobile.common.CatalogScreenBase;
-import com.solvd.mobile.common.MenuScreenBase;
-import com.solvd.mobile.common.QRCodeScreenBase;
+import com.solvd.mobile.common.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -26,6 +23,15 @@ public class MenuTest implements IAbstractTest {
         QRCodeScreenBase qr = menu.clickOnQRCodeButton();
 
         Assert.assertTrue(qr.isQRCodeTxtVisible(), "The QR Screen is not opened");
+    }
+
+    @Test(description = "[TC03]-testGeoLocationButton")
+    public void testGeoLocationButton() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        MenuScreenBase menu = catalog.clickOnMenu();
+        GeoLocationScreenBase geoLocation = menu.clickOnGeoLocationButton();
+
+        Assert.assertTrue(geoLocation.isGeoLocationTxtPresent(), "The GeoLocation screen is not opened");
     }
 
 
