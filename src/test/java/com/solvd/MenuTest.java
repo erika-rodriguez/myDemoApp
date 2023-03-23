@@ -34,5 +34,14 @@ public class MenuTest implements IAbstractTest {
         Assert.assertTrue(geoLocation.isGeoLocationTxtPresent(), "The GeoLocation screen is not opened");
     }
 
+    @Test(description = "[TC04]-testFaceIdButton")
+    public void testFaceIdButton() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        MenuScreenBase menu = catalog.clickOnMenu();
+        BiometricAlertScreenBase alert = menu.clickOnFingerPrintButton();
+        FingerPrintScreenBase fingerPrint = alert.clickOnOkButton();
+
+        Assert.assertTrue(fingerPrint.isFingerPrintTextPresent(),"The FingerPrint button does not work");
+    }
 
 }

@@ -2,10 +2,7 @@ package com.solvd.mobile.iOS;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.foundation.webdriver.locator.ExtendedFindBy;
-import com.solvd.mobile.common.AboutAppScreenBase;
-import com.solvd.mobile.common.GeoLocationScreenBase;
-import com.solvd.mobile.common.MenuScreenBase;
-import com.solvd.mobile.common.QRCodeScreenBase;
+import com.solvd.mobile.common.*;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 
@@ -40,5 +37,10 @@ public class MenuScreen extends MenuScreenBase{
     public GeoLocationScreenBase clickOnGeoLocationButton() {
         geoLocationBtn.click();
         return initPage(getDriver(), GeoLocationScreenBase.class);
+    }
+
+    @Override
+    public BiometricAlertScreenBase clickOnFingerPrintButton() {
+        return null;
     }
 }
