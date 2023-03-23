@@ -2,10 +2,7 @@ package com.solvd.mobile.android;
 
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.solvd.mobile.common.AboutAppScreenBase;
-import com.solvd.mobile.common.GeoLocationScreenBase;
-import com.solvd.mobile.common.MenuScreenBase;
-import com.solvd.mobile.common.QRCodeScreenBase;
+import com.solvd.mobile.common.*;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -18,6 +15,8 @@ public class MenuScreen extends MenuScreenBase {
     private ExtendedWebElement qrCodeBtn;
     @FindBy(xpath = "//*[@text='Geo Location']")
     private ExtendedWebElement geoLocationBtn;
+    @FindBy(xpath = "//*[@text='WebView']")
+    private ExtendedWebElement webViewBtn;
 
     public MenuScreen(WebDriver driver) {
         super(driver);
@@ -39,6 +38,12 @@ public class MenuScreen extends MenuScreenBase {
     public GeoLocationScreenBase clickOnGeoLocationButton() {
         geoLocationBtn.click();
         return initPage(getDriver(), GeoLocationScreenBase.class);
+    }
+
+    @Override
+    public WebViewScreenBase clickOnWebViewButton() {
+        webViewBtn.click();
+        return initPage(getDriver(), WebViewScreenBase.class);
     }
 
 }
