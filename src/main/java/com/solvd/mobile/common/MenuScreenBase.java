@@ -12,4 +12,7 @@ public abstract class MenuScreenBase extends AbstractPage {
     public abstract GeoLocationScreenBase clickOnGeoLocationButton();
     public abstract BiometricAlertScreenBase clickOnFingerPrintButton();
     public abstract WebViewScreenBase clickOnWebViewButton();
+
+
+    public abstract DrawingScreenBase clickOnDrawingButton();
 }
