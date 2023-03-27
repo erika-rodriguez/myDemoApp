@@ -83,4 +83,10 @@ public class MenuScreen extends MenuScreenBase {
         //This method works only in iOS
         return null;
     }
+
+    @Override
+    public LoginScreenBase clickOnLogout() {
+       //This method only works on iOS
+        return null;
+    }
 }

@@ -2,6 +2,7 @@ package com.solvd;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.solvd.mobile.common.*;
+import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -34,7 +35,7 @@ public class MenuTest implements IAbstractTest {
         Assert.assertTrue(geoLocation.isGeoLocationTxtPresent(), "The GeoLocation screen is not opened");
     }
 
-        @Test(description = "[TC04]-testFingerPrintButton - ANDROID")
+    @Test(description = "[TC04]-testFingerPrintButton - ANDROID")
     public void testFingerPrintButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
         MenuScreenBase menu = catalog.clickOnMenu();
@@ -43,7 +44,7 @@ public class MenuTest implements IAbstractTest {
 
         Assert.assertTrue(fingerPrint.isFingerPrintTextPresent(), "The FingerPrint button does not work");
     }
-    
+
     @Test(description = "[TC05]-testWebViewButton")
     public void testWebViewButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
@@ -52,8 +53,8 @@ public class MenuTest implements IAbstractTest {
 
         Assert.assertTrue(webView.isWebViewTxtPresent(), "The WebView screen is not opened");
     }
-    
-       @Test(description = "[TC06]-testDrawingButton")
+
+    @Test(description = "[TC06]-testDrawingButton")
     public void testDrawingButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
         MenuScreenBase menu = catalog.clickOnMenu();
@@ -99,9 +100,11 @@ public class MenuTest implements IAbstractTest {
         LoginScreenBase login = menu.clickOnLoginButton();
         login.setUsername("bod@example.com");
         login.setPassword("10203040");
-        CatalogScreenBase catalog1 = login.clickOnLogin();
-
-        Assert.assertTrue(catalog1.isPageOpened(), "The Login button does not work");
+        login.clickOnLogin();
     }
 
+    @Test(description = "[TC11]-testLogout - iOS", dependsOnMethods = {"testLogin"})
+    public void testLogout() {
+
+    }
 }

@@ -6,11 +6,12 @@ import com.qaprosoft.carina.core.foundation.webdriver.locator.ExtendedFindBy;
 import com.solvd.mobile.common.CatalogScreenBase;
 import com.solvd.mobile.common.LoginScreenBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
+import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = LoginScreenBase.class)
-public class LoginScreen extends LoginScreenBase {
+public class LoginScreen extends LoginScreenBase implements IMobileUtils {
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"Login\"`][1]")
     private ExtendedWebElement loginTxt;
     @FindBy(xpath = "//*[@type='XCUIElementTypeTextField']")
@@ -30,9 +31,11 @@ public class LoginScreen extends LoginScreenBase {
     public void setUsername(String username) {
     userName.type(username);
     }
+
     @Override
     public void setPassword(String password) {
     passWord.type(password);
+    hideKeyboard();
     }
     @Override
     public CatalogScreenBase clickOnLogin() {
