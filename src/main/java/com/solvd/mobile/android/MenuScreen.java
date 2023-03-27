@@ -21,7 +21,8 @@ public class MenuScreen extends MenuScreenBase {
     private ExtendedWebElement webViewBtn;
     @FindBy(xpath = "//*[@text='Drawing']")
     private ExtendedWebElement drawingBtn;
-
+    @FindBy(xpath = "//*[@text='Reset App State']")
+    private ExtendedWebElement resetAppBtn;
 
     public MenuScreen(WebDriver driver) {
         super(driver);
@@ -61,6 +62,12 @@ public class MenuScreen extends MenuScreenBase {
     public DrawingScreenBase clickOnDrawingButton() {
         drawingBtn.click();
         return initPage(getDriver(), DrawingScreenBase.class);
+    }
+
+    @Override
+    public ResetAppScreenBase clickOnResetAppButton() {
+        resetAppBtn.click();
+        return initPage(getDriver(), ResetAppScreenBase.class);
     }
 
 }

@@ -61,4 +61,13 @@ public class MenuTest implements IAbstractTest {
         Assert.assertTrue(drawing.isDrawingTxtPresent(),"The Drawing button does not work");
     }
 
+    @Test(description = "[TC08]-testResetAppButton")
+    public void testResetAppButton() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        MenuScreenBase menu = catalog.clickOnMenu();
+        ResetAppScreenBase reset = menu.clickOnResetAppButton();
+
+        Assert.assertTrue(reset.isResetAlertShown(),"The Reset App button does not work");
+    }
+
 }
