@@ -77,4 +77,10 @@ public class MenuScreen extends MenuScreenBase {
         loginBtn.click();
         return initPage(getDriver(), LoginScreenBase.class);
     }
+
+    @Override
+    public FaceIdScreenBase clickOnFaceIDButton() {
+        //This method works only in iOS
+        return null;
+    }
 }

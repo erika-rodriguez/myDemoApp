@@ -43,7 +43,7 @@ public class MenuTest implements IAbstractTest {
         Assert.assertTrue(webView.isWebViewTxtPresent(), "The WebView screen is not opened");
     }
 
-    @Test(description = "[TC04]-testFaceIdButton")
+    @Test(description = "[TC04]-testFingerPrintButton - ANDROID")
     public void testFingerPrintButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
         MenuScreenBase menu = catalog.clickOnMenu();
@@ -52,14 +52,25 @@ public class MenuTest implements IAbstractTest {
 
         Assert.assertTrue(fingerPrint.isFingerPrintTextPresent(), "The FingerPrint button does not work");
     }
-
-    @Test(description = "[TC06]-testDrawingButton")
+    
+       @Test(description = "[TC06]-testDrawingButton")
     public void testDrawingButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
         MenuScreenBase menu = catalog.clickOnMenu();
         DrawingScreenBase drawing = menu.clickOnDrawingButton();
 
         Assert.assertTrue(drawing.isDrawingTxtPresent(), "The Drawing button does not work");
+    }
+
+
+    @Test(description = "[TC07]-testFaceIdButton - iOS")
+    public void testFaceIdButton() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+
+        MenuScreenBase menu = catalog.clickOnMenu();
+        FaceIdScreenBase faceIdScreen = menu.clickOnFaceIDButton();
+        Assert.assertTrue(faceIdScreen.isFaceIdScreenOpened(), "The button FaceId does not Work");
+
     }
 
     @Test(description = "[TC08]-testResetAppButton")
@@ -78,6 +89,7 @@ public class MenuTest implements IAbstractTest {
         LoginScreenBase login = menu.clickOnLoginButton();
 
         Assert.assertTrue(login.isLoginTxtPresent(), "The Login button does not work");
+
     }
 
     @Test(description = "[TC10]-testLogin")
