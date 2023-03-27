@@ -70,4 +70,13 @@ public class MenuTest implements IAbstractTest {
         Assert.assertTrue(reset.isResetAlertShown(),"The Reset App button does not work");
     }
 
+    @Test(description = "[TC09]-testLoginButton")
+    public void testLoginButton() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        MenuScreenBase menu = catalog.clickOnMenu();
+        LoginScreenBase login = menu.clickOnLoginButton();
+
+        Assert.assertTrue(login.isLoginTxtPresent(),"The Login button does not work");
+    }
+
 }
