@@ -9,4 +9,8 @@ public abstract class LoginScreenBase extends AbstractPage {
     }
 
     public abstract boolean isLoginTxtPresent();
+    public abstract void selectUsers();
+    public abstract CatalogScreenBase clickOnLogin();
 }
+
+

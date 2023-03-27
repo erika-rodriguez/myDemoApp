@@ -13,6 +13,8 @@ public class CatalogScreen extends CatalogScreenBase {
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`name == \"More-tab-item\"`]")
     private ExtendedWebElement menuBtn;
 
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"Products\"`]")
+    private ExtendedWebElement products;
     public CatalogScreen(WebDriver driver) {
         super(driver);
     }
@@ -25,6 +27,6 @@ public class CatalogScreen extends CatalogScreenBase {
 
     @Override
     public boolean isPageOpened() {
-        return false;
+        return products.isElementPresent();
     }
 }
