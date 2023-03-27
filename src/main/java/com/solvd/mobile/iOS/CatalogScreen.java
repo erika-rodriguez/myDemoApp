@@ -25,6 +25,6 @@ public class CatalogScreen extends CatalogScreenBase {
 
     @Override
     public boolean isPageOpened() {
-        return false;
+        return menuBtn.isElementPresent();
     }
 }

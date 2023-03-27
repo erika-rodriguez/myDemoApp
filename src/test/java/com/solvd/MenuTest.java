@@ -33,6 +33,7 @@ public class MenuTest implements IAbstractTest {
 
         Assert.assertTrue(geoLocation.isGeoLocationTxtPresent(), "The GeoLocation screen is not opened");
     }
+
     @Test(description = "[TC05]-testWebViewButton")
     public void testWebViewButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
@@ -49,7 +50,7 @@ public class MenuTest implements IAbstractTest {
         BiometricAlertScreenBase alert = menu.clickOnFingerPrintButton();
         FingerPrintScreenBase fingerPrint = alert.clickOnOkButton();
 
-        Assert.assertTrue(fingerPrint.isFingerPrintTextPresent(),"The FingerPrint button does not work");
+        Assert.assertTrue(fingerPrint.isFingerPrintTextPresent(), "The FingerPrint button does not work");
     }
 
     @Test(description = "[TC06]-testDrawingButton")
@@ -58,7 +59,7 @@ public class MenuTest implements IAbstractTest {
         MenuScreenBase menu = catalog.clickOnMenu();
         DrawingScreenBase drawing = menu.clickOnDrawingButton();
 
-        Assert.assertTrue(drawing.isDrawingTxtPresent(),"The Drawing button does not work");
+        Assert.assertTrue(drawing.isDrawingTxtPresent(), "The Drawing button does not work");
     }
 
     @Test(description = "[TC08]-testResetAppButton")
@@ -67,7 +68,7 @@ public class MenuTest implements IAbstractTest {
         MenuScreenBase menu = catalog.clickOnMenu();
         ResetAppScreenBase reset = menu.clickOnResetAppButton();
 
-        Assert.assertTrue(reset.isResetAlertShown(),"The Reset App button does not work");
+        Assert.assertTrue(reset.isResetAlertShown(), "The Reset App button does not work");
     }
 
     @Test(description = "[TC09]-testLoginButton")
@@ -76,7 +77,19 @@ public class MenuTest implements IAbstractTest {
         MenuScreenBase menu = catalog.clickOnMenu();
         LoginScreenBase login = menu.clickOnLoginButton();
 
-        Assert.assertTrue(login.isLoginTxtPresent(),"The Login button does not work");
+        Assert.assertTrue(login.isLoginTxtPresent(), "The Login button does not work");
+    }
+
+    @Test(description = "[TC10]-testLogin")
+    public void testLogin() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        MenuScreenBase menu = catalog.clickOnMenu();
+        LoginScreenBase login = menu.clickOnLoginButton();
+        login.setUsername("bod@example.com");
+        login.setPassword("10203040");
+        CatalogScreenBase catalog1 = login.clickOnLogin();
+
+        Assert.assertTrue(catalog1.isPageOpened(), "The Login button does not work");
     }
 
 }
