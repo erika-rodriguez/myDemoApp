@@ -23,6 +23,8 @@ public class MenuScreen extends MenuScreenBase{
     private ExtendedWebElement resetAppBtn;
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`name == \"LogOut-menu-item\"`]")
     private ExtendedWebElement loginBtn;
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`name == \"Biometrics-menu-item\"`]")
+    private ExtendedWebElement faceIdButton;
 
     public MenuScreen(WebDriver driver) {
         super(driver);
@@ -73,5 +75,11 @@ public class MenuScreen extends MenuScreenBase{
     public LoginScreenBase clickOnLoginButton() {
         loginBtn.click();
         return initPage(getDriver(), LoginScreenBase.class);
+    }
+
+    @Override
+    public FaceIdScreenBase clickOnFaceIDButton() {
+        faceIdButton.click();
+        return initPage(getDriver(), FaceIdScreenBase.class);
     }
 }

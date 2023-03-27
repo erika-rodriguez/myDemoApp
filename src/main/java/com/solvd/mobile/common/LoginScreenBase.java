@@ -12,5 +12,3 @@ public abstract class LoginScreenBase extends AbstractPage {
     public abstract void selectUsers();
     public abstract CatalogScreenBase clickOnLogin();
 }
-
-

@@ -12,9 +12,8 @@ public abstract class MenuScreenBase extends AbstractPage {
     public abstract GeoLocationScreenBase clickOnGeoLocationButton();
     public abstract BiometricAlertScreenBase clickOnFingerPrintButton();
     public abstract WebViewScreenBase clickOnWebViewButton();
-
-
     public abstract DrawingScreenBase clickOnDrawingButton();
     public abstract ResetAppScreenBase clickOnResetAppButton();
     public abstract LoginScreenBase clickOnLoginButton();
+    public abstract FaceIdScreenBase clickOnFaceIDButton();
 }
