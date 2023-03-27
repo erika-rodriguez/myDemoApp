@@ -34,16 +34,7 @@ public class MenuTest implements IAbstractTest {
         Assert.assertTrue(geoLocation.isGeoLocationTxtPresent(), "The GeoLocation screen is not opened");
     }
 
-    @Test(description = "[TC05]-testWebViewButton")
-    public void testWebViewButton() {
-        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
-        MenuScreenBase menu = catalog.clickOnMenu();
-        WebViewScreenBase webView = menu.clickOnWebViewButton();
-
-        Assert.assertTrue(webView.isWebViewTxtPresent(), "The WebView screen is not opened");
-    }
-
-    @Test(description = "[TC04]-testFingerPrintButton - ANDROID")
+        @Test(description = "[TC04]-testFingerPrintButton - ANDROID")
     public void testFingerPrintButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
         MenuScreenBase menu = catalog.clickOnMenu();
@@ -51,6 +42,15 @@ public class MenuTest implements IAbstractTest {
         FingerPrintScreenBase fingerPrint = alert.clickOnOkButton();
 
         Assert.assertTrue(fingerPrint.isFingerPrintTextPresent(), "The FingerPrint button does not work");
+    }
+    
+    @Test(description = "[TC05]-testWebViewButton")
+    public void testWebViewButton() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        MenuScreenBase menu = catalog.clickOnMenu();
+        WebViewScreenBase webView = menu.clickOnWebViewButton();
+
+        Assert.assertTrue(webView.isWebViewTxtPresent(), "The WebView screen is not opened");
     }
     
        @Test(description = "[TC06]-testDrawingButton")
