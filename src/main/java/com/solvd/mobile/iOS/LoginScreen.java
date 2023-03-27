@@ -6,20 +6,17 @@ import com.qaprosoft.carina.core.foundation.webdriver.locator.ExtendedFindBy;
 import com.solvd.mobile.common.CatalogScreenBase;
 import com.solvd.mobile.common.LoginScreenBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
-import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = LoginScreenBase.class)
-public class LoginScreen extends LoginScreenBase implements IMobileUtils {
+public class LoginScreen extends LoginScreenBase {
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"Login\"`][1]")
     private ExtendedWebElement loginTxt;
-    @FindBy(xpath = "//*[@type='XCUIElementTypeTextField']")
-    private ExtendedWebElement userName;
-    @FindBy(xpath = "//*[@type='XCUIElementTypeSecureTextField']")
-    private ExtendedWebElement passWord;
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"Login\"`]")
     private ExtendedWebElement loginButton;
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"bob@example.com\"`]")
+    private ExtendedWebElement bobUser;
     public LoginScreen(WebDriver driver) {
         super(driver);
     }
@@ -28,14 +25,8 @@ public class LoginScreen extends LoginScreenBase implements IMobileUtils {
         return loginTxt.isElementPresent();
     }
     @Override
-    public void setUsername(String username) {
-    userName.type(username);
-    }
-
-    @Override
-    public void setPassword(String password) {
-    passWord.type(password);
-    hideKeyboard();
+    public void selectUsers() {
+        bobUser.click();
     }
     @Override
     public CatalogScreenBase clickOnLogin() {
