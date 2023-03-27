@@ -24,7 +24,6 @@ public class LoginScreen extends LoginScreenBase {
     public boolean isLoginTxtPresent() {
         return loginTxt.isElementPresent();
     }
-
     @Override
     public void selectUsers() {
         bobUser.click();

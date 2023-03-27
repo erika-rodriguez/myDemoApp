@@ -2,6 +2,7 @@ package com.solvd;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.solvd.mobile.common.*;
+import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -50,26 +51,26 @@ public class MenuTest implements IAbstractTest {
         BiometricAlertScreenBase alert = menu.clickOnFingerPrintButton();
         FingerPrintScreenBase fingerPrint = alert.clickOnOkButton();
 
-        Assert.assertTrue(fingerPrint.isFingerPrintTextPresent(),"The FingerPrint button does not work");
+        Assert.assertTrue(fingerPrint.isFingerPrintTextPresent(), "The FingerPrint button does not work");
     }
 
-    
-    @Test(description = "[TC05]-testWebViewButton")
-    public void testWebViewButton() {
-        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
-        MenuScreenBase menu = catalog.clickOnMenu();
-        WebViewScreenBase webView = menu.clickOnWebViewButton();
-
-        Assert.assertTrue(webView.isWebViewTxtPresent(), "The WebView screen is not opened");
-    }
-    
     @Test(description = "[TC06]-testDrawingButton")
     public void testDrawingButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
         MenuScreenBase menu = catalog.clickOnMenu();
         DrawingScreenBase drawing = menu.clickOnDrawingButton();
 
-        Assert.assertTrue(drawing.isDrawingTxtPresent(),"The Drawing button does not work");
+        Assert.assertTrue(drawing.isDrawingTxtPresent(), "The Drawing button does not work");
+    }
+
+    @Test(description = "[TC07]-testFaceIdButton - iOS")
+    public void testFaceIdButton() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+
+        MenuScreenBase menu = catalog.clickOnMenu();
+        FaceIdScreenBase faceIdScreen = menu.clickOnFaceIDButton();
+        Assert.assertTrue(faceIdScreen.isFaceIdScreenOpened(), "The button FaceId does not Work");
+
     }
 
     @Test(description = "[TC08]-testResetAppButton")
@@ -78,7 +79,7 @@ public class MenuTest implements IAbstractTest {
         MenuScreenBase menu = catalog.clickOnMenu();
         ResetAppScreenBase reset = menu.clickOnResetAppButton();
 
-        Assert.assertTrue(reset.isResetAlertShown(),"The Reset App button does not work");
+        Assert.assertTrue(reset.isResetAlertShown(), "The Reset App button does not work");
     }
 
     @Test(description = "[TC09]-testLoginButton")
@@ -90,7 +91,7 @@ public class MenuTest implements IAbstractTest {
         Assert.assertTrue(login.isLoginTxtPresent(), "The Login button does not work");
 
     }
-    
+
     @Test(description = "[TC10]-testLogin")
     public void testLogin() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
@@ -102,4 +103,10 @@ public class MenuTest implements IAbstractTest {
         Assert.assertTrue(catalog.isPageOpened(), "The Login button does not work");
     }
 
+    @Test(description = "[TC11]-testLogout - iOS", dependsOnMethods = {"testLogin"})
+    public void testLogout() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        MenuScreenBase menu = catalog.clickOnMenu();
+        menu.clickOnLogout();
+    }
 }

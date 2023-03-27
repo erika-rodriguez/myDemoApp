@@ -16,4 +16,5 @@ public abstract class MenuScreenBase extends AbstractPage {
     public abstract ResetAppScreenBase clickOnResetAppButton();
     public abstract LoginScreenBase clickOnLoginButton();
     public abstract FaceIdScreenBase clickOnFaceIDButton();
+    public abstract LoginScreenBase clickOnLogout();
 }
