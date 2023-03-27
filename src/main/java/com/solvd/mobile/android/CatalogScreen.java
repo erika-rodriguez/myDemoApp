@@ -7,13 +7,17 @@ import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE,parentClass = CatalogScreenBase.class)
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = CatalogScreenBase.class)
 public class CatalogScreen extends CatalogScreenBase {
     public CatalogScreen(WebDriver driver) {
         super(driver);
     }
+
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/menuIV")
     private ExtendedWebElement menu;
+    @FindBy(id = "com.saucelabs.mydemoapp.android:id/productTV")
+    private ExtendedWebElement productTitle;
+
     @Override
     public MenuScreenBase clickOnMenu() {
         menu.click();
@@ -22,6 +26,6 @@ public class CatalogScreen extends CatalogScreenBase {
 
     @Override
     public boolean isPageOpened() {
-        return menu.isElementPresent();
+        return productTitle.isElementPresent();
     }
 }

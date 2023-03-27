@@ -15,14 +15,11 @@ public class LoginScreen extends LoginScreenBase {
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/loginTV")
     private ExtendedWebElement loginText;
 
-    @FindBy(id = "com.saucelabs.mydemoapp.android:id/nameET")
-    private ExtendedWebElement setUsername;
-
-    @FindBy(id = "com.saucelabs.mydemoapp.android:id/passwordET")
-    private ExtendedWebElement setPassword;
-
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/loginBtn")
     private ExtendedWebElement loginButton;
+
+    @FindBy(id = "com.saucelabs.mydemoapp.android:id/username1TV")
+    private ExtendedWebElement bobUser;
 
     public LoginScreen(WebDriver driver) {
         super(driver);
@@ -33,20 +30,13 @@ public class LoginScreen extends LoginScreenBase {
         return loginTxt.isElementPresent();
     }
 
-
     @Override
-    public void setUsername(String username) {
-        setUsername.type(username);
+    public void selectUsers() {
+        bobUser.click();
     }
-
-    @Override
-    public void setPassword(String password) {
-        setPassword.type(password);
-    }
-
     @Override
     public CatalogScreenBase clickOnLogin() {
-      loginButton.click();
+        loginButton.click();
         return initPage(getDriver(), CatalogScreenBase.class);
     }
 

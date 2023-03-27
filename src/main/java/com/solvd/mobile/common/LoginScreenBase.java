@@ -9,11 +9,6 @@ public abstract class LoginScreenBase extends AbstractPage {
     }
 
     public abstract boolean isLoginTxtPresent();
-
-    public abstract void setUsername(String username);
-    public abstract void setPassword(String password);
-
+    public abstract void selectUsers();
     public abstract CatalogScreenBase clickOnLogin();
 }
-
-

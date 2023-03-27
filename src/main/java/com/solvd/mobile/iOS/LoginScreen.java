@@ -13,12 +13,10 @@ import org.openqa.selenium.support.FindBy;
 public class LoginScreen extends LoginScreenBase {
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"Login\"`][1]")
     private ExtendedWebElement loginTxt;
-    @FindBy(xpath = "//*[@type='XCUIElementTypeTextField']")
-    private ExtendedWebElement userName;
-    @FindBy(xpath = "//*[@type='XCUIElementTypeSecureTextField']")
-    private ExtendedWebElement passWord;
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"Login\"`]")
     private ExtendedWebElement loginButton;
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"bob@example.com\"`]")
+    private ExtendedWebElement bobUser;
     public LoginScreen(WebDriver driver) {
         super(driver);
     }
@@ -26,13 +24,10 @@ public class LoginScreen extends LoginScreenBase {
     public boolean isLoginTxtPresent() {
         return loginTxt.isElementPresent();
     }
+
     @Override
-    public void setUsername(String username) {
-    userName.type(username);
-    }
-    @Override
-    public void setPassword(String password) {
-    passWord.type(password);
+    public void selectUsers() {
+        bobUser.click();
     }
     @Override
     public CatalogScreenBase clickOnLogin() {
