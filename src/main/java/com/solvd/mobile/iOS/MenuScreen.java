@@ -19,6 +19,8 @@ public class MenuScreen extends MenuScreenBase{
 
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`name == \"Drawing-menu-item\"`]")
     private ExtendedWebElement drawingBtn;
+    @ExtendedFindBy(iosPredicate = "name == \"ResetAppState-menu-item\"")
+    private ExtendedWebElement resetAppBtn;
 
     public MenuScreen(WebDriver driver) {
         super(driver);
@@ -57,5 +59,11 @@ public class MenuScreen extends MenuScreenBase{
     public DrawingScreenBase clickOnDrawingButton() {
         drawingBtn.click();
         return initPage(getDriver(), DrawingScreenBase.class);
+    }
+
+    @Override
+    public ResetAppScreenBase clickOnResetAppButton() {
+        resetAppBtn.click();
+        return initPage(getDriver(), ResetAppScreenBase.class);
     }
 }
