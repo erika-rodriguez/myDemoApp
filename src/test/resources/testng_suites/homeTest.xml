@@ -2,12 +2,12 @@
 
 
 
-<suite name="ParallelThreads" verbose="1" parallel="methods" data-provider-thread-count="10">
-<test name="Menu">
+<suite name="ParallelThreads" verbose="1" >
+<test name="MenuSuite">
     <classes>
         <class name="com.solvd.MenuTest" >
         <methods>
-            <include name="testResetAppButton" />
+            <include name="testGeoLocationButton" />
         </methods>
         </class>
     </classes>
