@@ -2,7 +2,7 @@
 
 
 
-<suite name="ParallelThreads" verbose="1" parallel="methods" data-provider-thread-count="10">
+<suite name="ParallelThreads" verbose="1" >
 <test name="Menu">
     <classes>
         <class name="com.solvd.MenuTest" >

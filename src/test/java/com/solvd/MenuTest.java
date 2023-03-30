@@ -108,16 +108,15 @@ public class MenuTest implements IAbstractTest {
     }
 
     @Test(description = "[TC08]-testResetAppButton",dataProvider = "DataProvider")
-    @CsvDataSourceParameters(path = "parallelDevices.csv",
-            dsUid = "TUID")
+    @CsvDataSourceParameters(path = "parallelDevices.csv", dsUid = "TUID")
     public void testResetAppButton(HashMap<String,String> data) {
         R.CONFIG.put("capabilities.deviceName", data.get("deviceName"), true);
         R.CONFIG.put("capabilities.platformVersion",data.get("platformVersion"), true);
         R.CONFIG.put("capabilities.platformName", data.get("platformName"), true);
         R.CONFIG.put("selenium_url", data.get("selenium_url"), true);
         R.CONFIG.put("capabilities.app", data.get("app"), true);
-//        R.CONFIG.put("capabilities.build", "Parallel-Running-Android", true);
-//        R.CONFIG.put("capabilities.name", "ios-training-cycle", true);
+        R.CONFIG.put("capabilities.build", "Using_data_provider_thread_count", true);
+        R.CONFIG.put("capabilities.name", "ios-training-cycle", true);
 
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
         MenuScreenBase menu = catalog.clickOnMenu();

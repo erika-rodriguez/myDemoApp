@@ -1,11 +1,12 @@
 Execute,TUID,deviceName,platformVersion,platformName,selenium_url,app
-Y,1,Motorola Moto G7 Play,9,Android,http://hub.browserstack.com/wd/hub,bs://347a6d1482a53335e01e4966c36f1bc9577b09bf
-Y,2,Samsung Galaxy A52,11,Android,http://hub.browserstack.com/wd/hub,bs://347a6d1482a53335e01e4966c36f1bc9577b09bf
-Y,3,OnePlus 8,10,Android,http://hub.browserstack.com/wd/hub,bs://347a6d1482a53335e01e4966c36f1bc9577b09bf
-Y,4,Huawei P30,9,Android,http://hub.browserstack.com/wd/hub,bs://347a6d1482a53335e01e4966c36f1bc9577b09bf
-Y,5,Xiaomi Redmi Note 7,9,Android,http://hub.browserstack.com/wd/hub,bs://347a6d1482a53335e01e4966c36f1bc9577b09bf
-Y,6,Samsung Galaxy S6,5,Android,http://hub.browserstack.com/wd/hub,bs://347a6d1482a53335e01e4966c36f1bc9577b09bf
-Y,7,Samsung Galaxy S8 Plus,7,Android,http://hub.browserstack.com/wd/hub,bs://347a6d1482a53335e01e4966c36f1bc9577b09bf
-Y,8,Xiaomi Redmi Note 9,10,Android,http://hub.browserstack.com/wd/hub,bs://347a6d1482a53335e01e4966c36f1bc9577b09bf
-Y,9,OnePlus 7T,10,Android,http://hub.browserstack.com/wd/hub,bs://347a6d1482a53335e01e4966c36f1bc9577b09bf
-Y,10,Xiaomi Redmi Note 11,11,Android,http://hub.browserstack.com/wd/hub,bs://347a6d1482a53335e01e4966c36f1bc9577b09bf
+Y,1,Motorola Moto G7 Play,9.0,Android,http://hub.browserstack.com/wd/hub,bs://347a6d1482a53335e01e4966c36f1bc9577b09bf
+Y,2,Samsung Galaxy A52,11.0,Android,http://hub.browserstack.com/wd/hub,bs://347a6d1482a53335e01e4966c36f1bc9577b09bf
+Y,3,OnePlus 8,10.0,Android,http://hub.browserstack.com/wd/hub,bs://347a6d1482a53335e01e4966c36f1bc9577b09bf
+Y,4,Huawei P30,9.0,Android,http://hub.browserstack.com/wd/hub,bs://347a6d1482a53335e01e4966c36f1bc9577b09bf
+Y,5,Xiaomi Redmi Note 7,9.0,Android,http://hub.browserstack.com/wd/hub,bs://347a6d1482a53335e01e4966c36f1bc9577b09bf
+Y,6,Samsung Galaxy S6,5.0,Android,http://hub.browserstack.com/wd/hub,bs://347a6d1482a53335e01e4966c36f1bc9577b09bf
+Y,7,Samsung Galaxy S8 Plus,7.0,Android,http://hub.browserstack.com/wd/hub,bs://347a6d1482a53335e01e4966c36f1bc9577b09bf
+Y,8,Xiaomi Redmi Note 9,10.0,Android,http://hub.browserstack.com/wd/hub,bs://347a6d1482a53335e01e4966c36f1bc9577b09bf
+Y,9,OnePlus 7T,10.0,Android,http://hub.browserstack.com/wd/hub,bs://347a6d1482a53335e01e4966c36f1bc9577b09bf
+Y,10,Xiaomi Redmi Note 11,11.0,Android,http://hub.browserstack.com/wd/hub,bs://347a6d1482a53335e01e4966c36f1bc9577b09bf
+
