@@ -2,22 +2,16 @@ package com.solvd;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.dataprovider.annotations.CsvDataSourceParameters;
-import com.qaprosoft.carina.core.foundation.webdriver.listener.DriverListener;
-import com.qaprosoft.carina.core.foundation.webdriver.screenshot.ICapturable;
 import com.solvd.mobile.common.*;
 import com.zebrunner.agent.core.annotation.Maintainer;
 import com.zebrunner.agent.core.registrar.Screenshot;
 import com.zebrunner.carina.utils.R;
-import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.utils.report.ReportContext;
-import io.appium.java_client.screenrecording.CanRecordScreen;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.lang.invoke.MethodHandles;
@@ -26,45 +20,28 @@ import java.util.HashMap;
 public class MenuTest implements IAbstractTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
+    @Test(description = "[TC01]-testAboutButton")
+    public void testAboutButton() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        MenuScreenBase menu = catalog.clickOnMenu();
+        AboutAppScreenBase options = menu.clickOnAboutButton();
 
-//    @Test(description = "[TC01]-testAboutButton")
-//    public void testAboutButton() {
-//        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
-//        MenuScreenBase menu = catalog.clickOnMenu();
-//        AboutAppScreenBase options = menu.clickOnAboutButton();
-//
-//        Assert.assertTrue(options.isSauceLabMascotPresent(), "The About button does not work");
-//    }
+        Assert.assertTrue(options.isSauceLabMascotPresent(), "The About button does not work");
+    }
 
     @Test(description = "[TC02]-testQRScannerButton")
     public void testQRScannerButton() throws Exception {
-        LOGGER.info("Hola Soy el Logger desde ZEBRUnner providing all the info");
         LOGGER.info("Artifact's folder: {}", ReportContext.getArtifactsFolder().getAbsolutePath());
-        LOGGER.info("Soy el nombre de directorio del test: {}", ReportContext.getTestDir().getName());
+        LOGGER.info("Directory project : {}", ReportContext.getTestDir().getName());
 
-
-        // Screenshot.capture(getDriver(),"This es a GermanScreenShot");
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
-
         byte[] screenShot4 = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
         Screenshot.upload(screenShot4,null);
         MenuScreenBase menu = catalog.clickOnMenu();
-
-        LOGGER.info("Esta es la captura a 133450");
-        byte[] screenShot = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
-        Screenshot.upload(screenShot, null);
+        LOGGER.info("This is another logger info");
         QRCodeScreenBase qr = menu.clickOnQRCodeButton();
-
-
-        byte[] screenShot1 = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
-        Screenshot.upload(screenShot1,null);
         Assert.assertTrue(qr.isQRCodeTxtVisible(), "The QR Screen is not opened");
-
-        byte[] screenShot2 = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
-        Screenshot.upload(screenShot2,null);
     }
-
-
     @Test(description = "[TC03]-testGeoLocationButton")
     public void testGeoLocationButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
@@ -73,7 +50,6 @@ public class MenuTest implements IAbstractTest {
 
         Assert.assertTrue(geoLocation.isGeoLocationTxtPresent(), "The GeoLocation screen is not opened");
     }
-
     @Test(description = "[TC04]-testFingerPrintButton - ANDROID")
     public void testFingerPrintButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
@@ -83,7 +59,6 @@ public class MenuTest implements IAbstractTest {
 
         Assert.assertTrue(fingerPrint.isFingerPrintTextPresent(), "The FingerPrint button does not work");
     }
-
     @Test(description = "[TC05]-testWebViewButton")
     public void testWebViewButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
@@ -160,20 +135,4 @@ public class MenuTest implements IAbstractTest {
         Assert.assertTrue(reset.isResetAlertShown(), "The Reset App button does not work");
     }
 
-
-//    @DataProvider(parallel = true, name = "capabilitiesDataProvider")
-//    public static Object[][] capabilitiesDataProvider() {
-//        return new Object[][]{
-//                {"Motorola Moto G7 Play", "9.0", "Android", "http://hub.browserstack.com/wd/hub", "bs://347a6d1482a53335e01e4966c36f1bc9577b09bf"},
-//                {"Samsung Galaxy A52", "11.0", "Android", "http://hub.browserstack.com/wd/hub", "bs://347a6d1482a53335e01e4966c36f1bc9577b09bf"},
-//                {"OnePlus 8", "10.0", "Android", "http://hub.browserstack.com/wd/hub", "bs://347a6d1482a53335e01e4966c36f1bc9577b09bf"},
-//                {"Huawei P30", "9.0", "Android", "http://hub.browserstack.com/wd/hub", "bs://347a6d1482a53335e01e4966c36f1bc9577b09bf"},
-//                {"Xiaomi Redmi Note 7", "9.0", "Android", "http://hub.browserstack.com/wd/hub", "bs://347a6d1482a53335e01e4966c36f1bc9577b09bf"},
-//                {"Samsung Galaxy S6", "5.0", "Android", "http://hub.browserstack.com/wd/hub", "bs://347a6d1482a53335e01e4966c36f1bc9577b09bf"},
-//                {"Samsung Galaxy S8 Plus", "7.0", "Android", "http://hub.browserstack.com/wd/hub", "bs://347a6d1482a53335e01e4966c36f1bc9577b09bf"},
-//                {"Motorola Moto X 2nd Gen", "5.0", "Android", "http://hub.browserstack.com/wd/hub", "bs://347a6d1482a53335e01e4966c36f1bc9577b09bf"},
-//                {"OnePlus 7T", "10.0", "Android", "http://hub.browserstack.com/wd/hub", "bs://347a6d1482a53335e01e4966c36f1bc9577b09bf"},
-//                {"Xiaomi Redmi Note 11", "11.0", "Android", "http://hub.browserstack.com/wd/hub", "bs://347a6d1482a53335e01e4966c36f1bc9577b09bf"},
-//        };
-//    }
 }
