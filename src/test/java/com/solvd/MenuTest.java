@@ -4,9 +4,7 @@ import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.dataprovider.annotations.CsvDataSourceParameters;
 import com.solvd.mobile.common.*;
 import com.zebrunner.carina.utils.R;
-import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -124,22 +122,4 @@ public class MenuTest implements IAbstractTest {
 
         Assert.assertTrue(reset.isResetAlertShown(), "The Reset App button does not work");
     }
-
-
-
-//    @DataProvider(parallel = true, name = "capabilitiesDataProvider")
-//    public static Object[][] capabilitiesDataProvider() {
-//        return new Object[][]{
-//                {"Motorola Moto G7 Play", "9.0", "Android", "http://hub.browserstack.com/wd/hub", "bs://347a6d1482a53335e01e4966c36f1bc9577b09bf"},
-//                {"Samsung Galaxy A52", "11.0", "Android", "http://hub.browserstack.com/wd/hub", "bs://347a6d1482a53335e01e4966c36f1bc9577b09bf"},
-//                {"OnePlus 8", "10.0", "Android", "http://hub.browserstack.com/wd/hub", "bs://347a6d1482a53335e01e4966c36f1bc9577b09bf"},
-//                {"Huawei P30", "9.0", "Android", "http://hub.browserstack.com/wd/hub", "bs://347a6d1482a53335e01e4966c36f1bc9577b09bf"},
-//                {"Xiaomi Redmi Note 7", "9.0", "Android", "http://hub.browserstack.com/wd/hub", "bs://347a6d1482a53335e01e4966c36f1bc9577b09bf"},
-//                {"Samsung Galaxy S6", "5.0", "Android", "http://hub.browserstack.com/wd/hub", "bs://347a6d1482a53335e01e4966c36f1bc9577b09bf"},
-//                {"Samsung Galaxy S8 Plus", "7.0", "Android", "http://hub.browserstack.com/wd/hub", "bs://347a6d1482a53335e01e4966c36f1bc9577b09bf"},
-//                {"Motorola Moto X 2nd Gen", "5.0", "Android", "http://hub.browserstack.com/wd/hub", "bs://347a6d1482a53335e01e4966c36f1bc9577b09bf"},
-//                {"OnePlus 7T", "10.0", "Android", "http://hub.browserstack.com/wd/hub", "bs://347a6d1482a53335e01e4966c36f1bc9577b09bf"},
-//                {"Xiaomi Redmi Note 11", "11.0", "Android", "http://hub.browserstack.com/wd/hub", "bs://347a6d1482a53335e01e4966c36f1bc9577b09bf"},
-//        };
-//    }
 }
