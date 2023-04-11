@@ -1,5 +1,6 @@
 package com.solvd.mobile.android;
 
+import com.qaprosoft.carina.core.foundation.webdriver.Screenshot;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.solvd.mobile.common.AboutAppScreenBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
