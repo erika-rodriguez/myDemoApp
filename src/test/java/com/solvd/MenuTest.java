@@ -50,6 +50,7 @@ public class MenuTest implements IAbstractTest {
 
         Assert.assertTrue(geoLocation.isGeoLocationTxtPresent(), "The GeoLocation screen is not opened");
     }
+
     @Test(description = "[TC04]-testFingerPrintButton - ANDROID")
     public void testFingerPrintButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
@@ -59,6 +60,7 @@ public class MenuTest implements IAbstractTest {
 
         Assert.assertTrue(fingerPrint.isFingerPrintTextPresent(), "The FingerPrint button does not work");
     }
+
     @Test(description = "[TC05]-testWebViewButton")
     public void testWebViewButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
