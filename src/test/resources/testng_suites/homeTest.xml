@@ -3,7 +3,7 @@
 
 
 <suite name="ParallelThreads" verbose="1" >
-<test name="Menu">
+<test name="MenuSuite">
     <classes>
         <class name="com.solvd.MenuTest" />
 <!--        <methods>-->

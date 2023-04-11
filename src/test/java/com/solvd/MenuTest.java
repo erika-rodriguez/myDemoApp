@@ -3,13 +3,22 @@ package com.solvd;
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.dataprovider.annotations.CsvDataSourceParameters;
 import com.solvd.mobile.common.*;
+import com.zebrunner.agent.core.annotation.Maintainer;
+import com.zebrunner.agent.core.registrar.Screenshot;
 import com.zebrunner.carina.utils.R;
+import com.zebrunner.carina.utils.report.ReportContext;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.lang.invoke.MethodHandles;
 import java.util.HashMap;
 
 public class MenuTest implements IAbstractTest {
+    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     @Test(description = "[TC01]-testAboutButton")
     public void testAboutButton() {
@@ -21,14 +30,18 @@ public class MenuTest implements IAbstractTest {
     }
 
     @Test(description = "[TC02]-testQRScannerButton")
-    public void testQRScannerButton() {
-        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
-        MenuScreenBase menu = catalog.clickOnMenu();
-        QRCodeScreenBase qr = menu.clickOnQRCodeButton();
+    public void testQRScannerButton() throws Exception {
+        LOGGER.info("Artifact's folder: {}", ReportContext.getArtifactsFolder().getAbsolutePath());
+        LOGGER.info("Directory project : {}", ReportContext.getTestDir().getName());
 
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        byte[] screenShot4 = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
+        Screenshot.upload(screenShot4,null);
+        MenuScreenBase menu = catalog.clickOnMenu();
+        LOGGER.info("This is another logger info");
+        QRCodeScreenBase qr = menu.clickOnQRCodeButton();
         Assert.assertTrue(qr.isQRCodeTxtVisible(), "The QR Screen is not opened");
     }
-
     @Test(description = "[TC03]-testGeoLocationButton")
     public void testGeoLocationButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
@@ -105,15 +118,16 @@ public class MenuTest implements IAbstractTest {
         menu.clickOnLogout();
     }
 
-    @Test(description = "[TC08]-testResetAppButton",dataProvider = "DataProvider")
+    @Test(description = "[TC08]-testResetAppButton", dataProvider = "DataProvider")
+    @Maintainer("ErikaAndGerman")
     @CsvDataSourceParameters(path = "parallelDevices.csv", dsUid = "TUID")
-    public void testResetAppButton(HashMap<String,String> data) {
+    public void testResetAppButton(HashMap<String, String> data) {
         R.CONFIG.put("capabilities.deviceName", data.get("deviceName"), true);
-        R.CONFIG.put("capabilities.platformVersion",data.get("platformVersion"), true);
+        R.CONFIG.put("capabilities.platformVersion", data.get("platformVersion"), true);
         R.CONFIG.put("capabilities.platformName", data.get("platformName"), true);
         R.CONFIG.put("selenium_url", data.get("selenium_url"), true);
         R.CONFIG.put("capabilities.app", data.get("app"), true);
-        R.CONFIG.put("capabilities.build", "Using_data_provider_thread_count", true);
+        R.CONFIG.put("capabilities.build", "30_Devices_Running", true);
         R.CONFIG.put("capabilities.name", "ios-training-cycle", true);
 
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
@@ -122,4 +136,5 @@ public class MenuTest implements IAbstractTest {
 
         Assert.assertTrue(reset.isResetAlertShown(), "The Reset App button does not work");
     }
+
 }
