@@ -4,8 +4,12 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.foundation.webdriver.locator.ExtendedFindBy;
 import com.solvd.mobile.common.CatalogScreenBase;
 import com.solvd.mobile.common.MenuScreenBase;
+import com.solvd.mobile.common.SortingScreenBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE,parentClass = CatalogScreenBase.class)
 public class CatalogScreen extends CatalogScreenBase {
@@ -29,4 +33,36 @@ public class CatalogScreen extends CatalogScreenBase {
     public boolean isPageOpened() {
         return products.isElementPresent();
     }
+
+    @Override
+    public SortingScreenBase clickOnSortingItem() {
+        return null;
+    }
+
+    @Override
+    public List<Double> removeDollarSymbol() {
+        return null;
+    }
+
+    @Override
+    public List<Double> sortList() {
+        return null;
+    }
+
+    @Override
+    public boolean swipe(ExtendedWebElement webElement) {
+        return false;
+    }
+
+    @Override
+    public List<Double> getRawList() {
+        return null;
+    }
+
+    @Override
+    public List<ExtendedWebElement> createList() {
+        return null;
+    }
+
+
 }
