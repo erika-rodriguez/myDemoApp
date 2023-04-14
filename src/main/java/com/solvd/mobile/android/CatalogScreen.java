@@ -29,9 +29,6 @@ public class CatalogScreen extends CatalogScreenBase {
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/sortIV")
     private ExtendedWebElement sortingOrderButton;
 
-    @FindBy(id = "com.saucelabs.mydemoapp.android:id/LinkedInIV")
-    private ExtendedWebElement linkedIdn;
-
     @Override
     public MenuScreenBase clickOnMenu() {
         menu.click();
@@ -49,38 +46,35 @@ public class CatalogScreen extends CatalogScreenBase {
         return initPage(getDriver(), SortingScreenBase.class);
     }
 
-    public List<Double> sortList(){
-        List<Double> doubleList = removeDollarSymbol();
-        return doubleList.stream().sorted().collect(Collectors.toList());
-    }
-
     @Override
-    public List<Double> removeDollarSymbol() {
-        List<ExtendedWebElement> myList = createList();
-        List<String> stringList = myList.stream().map(e -> e.getText().replace("$ ", "")).collect(Collectors.toList());
+    public List<Double> removeDollarSymbol(List<ExtendedWebElement> originalList) {
+        List<String> stringList = originalList.stream().map(e -> e.getText().replace("$ ", "")).collect(Collectors.toList());
         return stringList.stream().map(e -> Double.valueOf(e)).collect(Collectors.toList());
     }
 
     @Override
     public List<ExtendedWebElement> createList() {
-        List<ExtendedWebElement> myList = new ArrayList<>();
-        myList.addAll(pricesList);
-        swipe(linkedIdn);
-        myList.addAll(pricesList);
-        return myList;
+        return pricesList;
     }
 
     @Override
-    public boolean swipe(ExtendedWebElement locator) {
-        return swipe(locator, Direction.UP);
+    public boolean isCatalogAscendingSorted(){
+        List<Double> ascendingSortedList=removeDollarSymbol(createList());
+        for (int i = 0; i < ascendingSortedList.size()-1; i++) {
+            if (ascendingSortedList.get(i)<ascendingSortedList.get(i+1)){
+                return true;
+            }
+        }
+        return false;
     }
-
     @Override
-    public List<Double> getRawList() {
-        List<ExtendedWebElement> myList = createList();
-        List<String> stringList = myList.stream().map(e -> e.getText().replace("$ ", "")).collect(Collectors.toList());
-        return stringList.stream().map(e -> Double.valueOf(e)).collect(Collectors.toList());
+    public boolean isCatalogDescendingSorted(){
+        List<Double> ascendingSortedList=removeDollarSymbol(createList());
+        for (int i = 0; i < ascendingSortedList.size()-1; i++) {
+            if (ascendingSortedList.get(i)>ascendingSortedList.get(i+1)){
+                return true;
+            }
+        }
+        return false;
     }
-
-
 }

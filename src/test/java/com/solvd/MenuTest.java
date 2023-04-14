@@ -145,41 +145,20 @@ public class MenuTest implements IAbstractTest{
 
     @Test(description = "[TC14]-testAscendingPriceButton")
     public void testAscendingPriceButton() {
-
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
-        List<Double> expectedList = catalog.removeDollarSymbol();
-        SortingScreenBase panel =catalog.clickOnSortingItem();
-        panel.clickOnPriceAscendingOrder();
-        List<Double> actualList = catalog.getRawList();
+        SortingScreenBase sortingOptions =catalog.clickOnSortingItem();
+        CatalogScreenBase sortedCatalog=sortingOptions.clickOnPriceAscendingOrder();
 
-//        Assert.assertEquals(expectedList,actualList,"The elements were not sorted");
+        Assert.assertTrue(sortedCatalog.isCatalogAscendingSorted(),"The catalog is not sorted in ascending order.");
 
-//        List<WebElement> priceListWithOutSorting = catalog.gettingPriceList();
-//        List<Double> priceInDouble = removeDollarSymbol(priceListWithOutSorting);
-//
-//        SortingScreenBase panel = catalog.clickOnSortingItem();
-//        panel.clickOnPriceAscendingOrder();
-//        List<WebElement> sortedPriceList = catalog.gettingPriceList();
-//        Assert.assertEquals(priceListWithOutSorting, sortedPriceList, "The ascending Button does not work");
+    }
 
-//        SortingProductName sort = new SortingProductName(getDriver());
-//        List<WebElement> priceList = sort.gettingPriceList();
-//        for (WebElement data : priceList) {
-//            System.out.println(data.getText());
-//        }
+    @Test(description = "[TC13]-testDescendingPriceOrder")
+    public void testDescendingPriceOrder(){
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        SortingScreenBase sortingOptions =catalog.clickOnSortingItem();
+        CatalogScreenBase sortedCatalog=sortingOptions.clickOnPriceDescendingOrder();
 
-//        System.out.println("Number without dollar symbol");
-//        List<String> numberPrice = sort.removeDollarSymbol(priceList);
-//        for (String data : numberPrice) {
-//            System.out.println(data.toString());
-//        }
-//        List<String> expectedResult = new ArrayList<>();
-//        expectedResult.add("7.99");
-//        expectedResult.add("9.99");
-//        expectedResult.add("15.99");
-//        expectedResult.add("15.99");
-
-        // Assert.assertEquals(numberPrice, expectedResult, "The price was not sorted");
-
+        Assert.assertTrue(sortedCatalog.isCatalogDescendingSorted(),"The catalog is not sorted in descending order.");
     }
 }

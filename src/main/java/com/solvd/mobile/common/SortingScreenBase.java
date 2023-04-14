@@ -12,13 +12,4 @@ public abstract class SortingScreenBase extends AbstractPage {
     }
     public abstract CatalogScreenBase clickOnPriceAscendingOrder();
     public abstract CatalogScreenBase clickOnPriceDescendingOrder();
-    public abstract List<WebElement> gettingProductsName();
-
-    public abstract List<String> sortProducts(List<WebElement> elements);
-
-    public abstract List<String> parsingWebElementToString(List<WebElement> elements);
-
-    public abstract List<String> reverseOrderProductTextFunction(List<WebElement> elements);
-
-    public abstract List<Double> removeDollarSymbol(List<WebElement> elements);
 }

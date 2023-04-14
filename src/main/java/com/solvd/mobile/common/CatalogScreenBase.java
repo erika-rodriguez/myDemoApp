@@ -20,13 +20,10 @@ public abstract class CatalogScreenBase extends AbstractPage implements IMobileU
 
     public abstract SortingScreenBase clickOnSortingItem();
 
-    public abstract List<Double> removeDollarSymbol();
-
-    public abstract List<Double> sortList();
-
-    public abstract boolean swipe(ExtendedWebElement webElement);
-
-    public abstract List<Double> getRawList();
+    public abstract List<Double> removeDollarSymbol(List<ExtendedWebElement> originalList);
 
     public abstract List<ExtendedWebElement> createList();
+    public abstract boolean isCatalogAscendingSorted();
+
+    public abstract boolean isCatalogDescendingSorted();
 }
