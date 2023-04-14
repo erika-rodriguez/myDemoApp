@@ -2,6 +2,7 @@ package com.solvd;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.dataprovider.annotations.CsvDataSourceParameters;
+import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.solvd.mobile.common.*;
 import com.zebrunner.agent.core.annotation.Maintainer;
 import com.zebrunner.agent.core.registrar.Screenshot;
@@ -9,15 +10,19 @@ import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.report.ReportContext;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.lang.invoke.MethodHandles;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class MenuTest implements IAbstractTest {
+public class MenuTest implements IAbstractTest{
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     @Test(description = "[TC01]-testAboutButton")
@@ -36,12 +41,13 @@ public class MenuTest implements IAbstractTest {
 
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
         byte[] screenShot4 = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
-        Screenshot.upload(screenShot4,null);
+        Screenshot.upload(screenShot4, null);
         MenuScreenBase menu = catalog.clickOnMenu();
         LOGGER.info("This is another logger info");
         QRCodeScreenBase qr = menu.clickOnQRCodeButton();
         Assert.assertTrue(qr.isQRCodeTxtVisible(), "The QR Screen is not opened");
     }
+
     @Test(description = "[TC03]-testGeoLocationButton")
     public void testGeoLocationButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
@@ -137,4 +143,22 @@ public class MenuTest implements IAbstractTest {
         Assert.assertTrue(reset.isResetAlertShown(), "The Reset App button does not work");
     }
 
+    @Test(description = "[TC14]-testAscendingPriceButton")
+    public void testAscendingPriceButton() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        SortingScreenBase sortingOptions =catalog.clickOnSortingItem();
+        CatalogScreenBase sortedCatalog=sortingOptions.clickOnPriceAscendingOrder();
+
+        Assert.assertTrue(sortedCatalog.isCatalogAscendingSorted(),"The catalog is not sorted in ascending order.");
+
+    }
+
+    @Test(description = "[TC13]-testDescendingPriceOrder")
+    public void testDescendingPriceOrder(){
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        SortingScreenBase sortingOptions =catalog.clickOnSortingItem();
+        CatalogScreenBase sortedCatalog=sortingOptions.clickOnPriceDescendingOrder();
+
+        Assert.assertTrue(sortedCatalog.isCatalogDescendingSorted(),"The catalog is not sorted in descending order.");
+    }
 }
