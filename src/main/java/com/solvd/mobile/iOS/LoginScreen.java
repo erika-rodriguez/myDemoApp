@@ -1,13 +1,11 @@
 package com.solvd.mobile.iOS;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.annotations.Predicate;
 import com.qaprosoft.carina.core.foundation.webdriver.locator.ExtendedFindBy;
 import com.solvd.mobile.common.CatalogScreenBase;
 import com.solvd.mobile.common.LoginScreenBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = LoginScreenBase.class)
 public class LoginScreen extends LoginScreenBase {

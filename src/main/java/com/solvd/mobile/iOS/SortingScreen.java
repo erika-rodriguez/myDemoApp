@@ -1,18 +1,19 @@
-package com.solvd.mobile.android;
+package com.solvd.mobile.iOS;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.qaprosoft.carina.core.foundation.webdriver.locator.ExtendedFindBy;
 import com.solvd.mobile.common.CatalogScreenBase;
 import com.solvd.mobile.common.SortingScreenBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE,parentClass = SortingScreenBase.class)
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = SortingScreenBase.class)
 public class SortingScreen extends SortingScreenBase {
 
-    @FindBy(id = "com.saucelabs.mydemoapp.android:id/menuPriceAscIV")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"Price - Ascending\"`]")
     private ExtendedWebElement ascendingPriceButton;
-    @FindBy(id = "com.saucelabs.mydemoapp.android:id/menuPriceDscIV")
+
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"Price - Descending\"`]")
     private ExtendedWebElement descendingPriceButton;
 
     public SortingScreen(WebDriver driver) {
@@ -21,7 +22,7 @@ public class SortingScreen extends SortingScreenBase {
 
     @Override
     public CatalogScreenBase clickOnPriceAscendingOrder() {
-       ascendingPriceButton.click();
+        ascendingPriceButton.click();
         return initPage(getDriver(), CatalogScreenBase.class);
     }
 

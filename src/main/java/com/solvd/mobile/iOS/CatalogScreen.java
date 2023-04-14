@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE,parentClass = CatalogScreenBase.class)
 public class CatalogScreen extends CatalogScreenBase {
@@ -23,8 +24,8 @@ public class CatalogScreen extends CatalogScreenBase {
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"Button\"`]")
     private ExtendedWebElement sortingOrderButton;
 
-    @FindBy(xpath = "//XCUIElementTypeStaticText[@name=contains(.,'$')]")
-    private ExtendedWebElement price;
+    @FindBy(xpath = "//*[contains(@name, '$')]")
+    private List<ExtendedWebElement>  price;
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"Linkedin Icons\"`]\n")
     private ExtendedWebElement linkedinIcon;
 
@@ -52,21 +53,34 @@ public class CatalogScreen extends CatalogScreenBase {
 
     @Override
     public List<Double> removeDollarSymbol(List<ExtendedWebElement> originalList) {
-        return null;
+        List<String> stringList = originalList.stream().map(e -> e.getText().replace("$ ", "")).collect(Collectors.toList());
+        return stringList.stream().map(e -> Double.valueOf(e)).collect(Collectors.toList());
     }
 
     @Override
     public List<ExtendedWebElement> createList() {
-        return null;
+        return price;
     }
 
     @Override
     public boolean isCatalogAscendingSorted() {
+        List<Double> ascendingSortedList=removeDollarSymbol(createList());
+        for (int i = 0; i < ascendingSortedList.size()-1; i++) {
+            if (ascendingSortedList.get(i)<ascendingSortedList.get(i+1)){
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
     public boolean isCatalogDescendingSorted() {
+        List<Double> ascendingSortedList=removeDollarSymbol(createList());
+        for (int i = 0; i < ascendingSortedList.size()-1; i++) {
+            if (ascendingSortedList.get(i)>ascendingSortedList.get(i+1)){
+                return true;
+            }
+        }
         return false;
     }
 }
