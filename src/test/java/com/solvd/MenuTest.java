@@ -36,12 +36,13 @@ public class MenuTest implements IAbstractTest {
 
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
         byte[] screenShot4 = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
-        Screenshot.upload(screenShot4,null);
+        Screenshot.upload(screenShot4, null);
         MenuScreenBase menu = catalog.clickOnMenu();
         LOGGER.info("This is another logger info");
         QRCodeScreenBase qr = menu.clickOnQRCodeButton();
         Assert.assertTrue(qr.isQRCodeTxtVisible(), "The QR Screen is not opened");
     }
+
     @Test(description = "[TC03]-testGeoLocationButton")
     public void testGeoLocationButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
@@ -137,4 +138,22 @@ public class MenuTest implements IAbstractTest {
         Assert.assertTrue(reset.isResetAlertShown(), "The Reset App button does not work");
     }
 
+    @Test(description = "[TC14]-testAscendingPriceButton")
+    public void testAscendingPriceButton() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        SortingScreenBase sortingOptions = catalog.clickOnSortingItem();
+        CatalogScreenBase sortedCatalog = sortingOptions.clickOnPriceAscendingOrder();
+
+        Assert.assertTrue(sortedCatalog.isCatalogAscendingSorted(), "The catalog is not sorted in ascending order.");
+
+    }
+
+    @Test(description = "[TC13]-testDescendingPriceOrder")
+    public void testDescendingPriceOrder() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        SortingScreenBase sortingOptions = catalog.clickOnSortingItem();
+
+        CatalogScreenBase sortedCatalog = sortingOptions.clickOnPriceDescendingOrder();
+        Assert.assertTrue(sortedCatalog.isCatalogDescendingSorted(), "The catalog is not sorted in descending order.");
+    }
 }
