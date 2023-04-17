@@ -2,6 +2,7 @@ package com.solvd;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.dataprovider.annotations.CsvDataSourceParameters;
+import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.solvd.mobile.common.*;
 import com.zebrunner.agent.core.annotation.Maintainer;
 import com.zebrunner.agent.core.registrar.Screenshot;
@@ -154,6 +155,17 @@ public class MenuTest implements IAbstractTest {
 
         CatalogScreenBase sortedCatalog = sortingOptions.clickOnPriceDescendingOrder();
         Assert.assertTrue(sortedCatalog.isCatalogDescendingSorted(), "The catalog is not sorted in descending order.");
+    }
+
+    @Test(description = "[TC-]-testAscendingNameButton")
+    public void testAscendingNameButton() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+
+        SortingScreenBase sortingOptions = catalog.clickOnSortingItem();
+        sortingOptions.clickOnNameAscendingOption();
+
+        Assert.assertTrue(catalog.isAscendingNameSorted(), "The catalog is not sorted in ascending order.");
+
     }
 
     @Test(description = "[TC12]-testDescendingNameOrder")

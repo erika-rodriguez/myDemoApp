@@ -8,6 +8,6 @@ public abstract class SortingScreenBase extends AbstractPage {
     }
     public abstract CatalogScreenBase clickOnPriceAscendingOrder();
     public abstract CatalogScreenBase clickOnPriceDescendingOrder();
-
+    public abstract CatalogScreenBase clickOnNameAscendingOption();
     public abstract CatalogScreenBase clickOnNameDescendingOrder();
 }

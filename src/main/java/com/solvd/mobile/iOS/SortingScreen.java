@@ -16,6 +16,9 @@ public class SortingScreen extends SortingScreenBase {
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"Price - Descending\"`]")
     private ExtendedWebElement descendingPriceButton;
 
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"Name - Ascending\"`]")
+    private ExtendedWebElement ascendingNameButton;
+
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"Name - Descending\"`]")
     private ExtendedWebElement descendingNameButton;
 
@@ -32,6 +35,12 @@ public class SortingScreen extends SortingScreenBase {
     @Override
     public CatalogScreenBase clickOnPriceDescendingOrder() {
         descendingPriceButton.click();
+        return initPage(getDriver(), CatalogScreenBase.class);
+    }
+
+    @Override
+    public CatalogScreenBase clickOnNameAscendingOption() {
+        ascendingNameButton.click();
         return initPage(getDriver(), CatalogScreenBase.class);
     }
 

@@ -12,7 +12,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@DeviceType(pageType = DeviceType.Type.IOS_PHONE,parentClass = CatalogScreenBase.class)
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = CatalogScreenBase.class)
 public class CatalogScreen extends CatalogScreenBase {
 
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`name == \"More-tab-item\"`]")
@@ -25,13 +25,16 @@ public class CatalogScreen extends CatalogScreenBase {
     private ExtendedWebElement sortingOrderButton;
 
     @FindBy(xpath = "//*[contains(@name, '$')]")
+    private List<ExtendedWebElement> price;
+
+    @FindBy(xpath = "//*[contains(@name, 'Sauce Lab')]")
+    private List<ExtendedWebElement> name;
     private List<ExtendedWebElement>  price;
 
     @FindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, 'Sauce')]")
     private List<ExtendedWebElement>  namesList;
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"Linkedin Icons\"`]\n")
     private ExtendedWebElement linkedinIcon;
-
 
     public CatalogScreen(WebDriver driver) {
         super(driver);
@@ -61,6 +64,12 @@ public class CatalogScreen extends CatalogScreenBase {
     }
 
     @Override
+    public List<String> removeSpace() {
+        List<ExtendedWebElement> list = createNameList();
+        return list.stream().map(e -> e.getText().replace(" ", "")).collect(Collectors.toList());
+    }
+
+    @Override
     public List<String> turnIntoStringList(List<ExtendedWebElement> originalList) {
         return originalList.stream().map(e->e.getText()).collect(Collectors.toList());
     }
@@ -77,9 +86,9 @@ public class CatalogScreen extends CatalogScreenBase {
 
     @Override
     public boolean isCatalogAscendingSorted() {
-        List<Double> ascendingSortedList=removeDollarSymbol(createList());
-        for (int i = 0; i < ascendingSortedList.size()-1; i++) {
-            if (ascendingSortedList.get(i)<ascendingSortedList.get(i+1)){
+        List<Double> ascendingSortedList = removeDollarSymbol(createList());
+        for (int i = 0; i < ascendingSortedList.size() - 1; i++) {
+            if (ascendingSortedList.get(i) < ascendingSortedList.get(i + 1)) {
                 return true;
             }
         }
@@ -87,14 +96,32 @@ public class CatalogScreen extends CatalogScreenBase {
     }
 
     @Override
+    public boolean isAscendingNameSorted() {
+        List<String> list= removeSpace();
+        for (int i = 0; i < list.size() - 1; i++) {
+            String current = list.get(i);
+            String next = list.get(i + 1);
+            if (current.compareTo(next) > 0) {
+                return false; // If current > next, list is not in ascending order
+            }
+        }
+        return true; // If loop completes, list is in ascending order
+    }
+
+    @Override
     public boolean isCatalogDescendingSorted() {
-        List<Double> ascendingSortedList=removeDollarSymbol(createList());
-        for (int i = 0; i < ascendingSortedList.size()-1; i++) {
-            if (ascendingSortedList.get(i)>ascendingSortedList.get(i+1)){
+        List<Double> ascendingSortedList = removeDollarSymbol(createList());
+        for (int i = 0; i < ascendingSortedList.size() - 1; i++) {
+            if (ascendingSortedList.get(i) > ascendingSortedList.get(i + 1)) {
                 return true;
             }
         }
         return false;
+    }
+
+    @Override
+    public List<ExtendedWebElement> createNameList() {
+        return name;
     }
 
     @Override

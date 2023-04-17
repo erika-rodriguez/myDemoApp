@@ -22,11 +22,12 @@ public class CatalogScreen extends CatalogScreenBase {
     private ExtendedWebElement productTitle;
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/priceTV")
     private List<ExtendedWebElement> pricesList;
-
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/titleTV")
     private List<ExtendedWebElement> namesList;
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/sortIV")
     private ExtendedWebElement sortingOrderButton;
+    @FindBy(xpath = "//*[contains(@name, 'Sauce Lab')]")
+    private List<ExtendedWebElement> name;
 
     @Override
     public MenuScreenBase clickOnMenu() {
@@ -49,6 +50,12 @@ public class CatalogScreen extends CatalogScreenBase {
     public List<Double> removeDollarSymbol(List<ExtendedWebElement> originalList) {
         List<String> stringList = originalList.stream().map(e -> e.getText().replace("$ ", "")).collect(Collectors.toList());
         return stringList.stream().map(e -> Double.valueOf(e)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<String> removeSpace() {
+        List<ExtendedWebElement> list = createNameList();
+        return list.stream().map(e -> e.getText().replace(" ", "")).collect(Collectors.toList());
     }
 
     @Override
@@ -85,6 +92,29 @@ public class CatalogScreen extends CatalogScreenBase {
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean isAscendingNameSorted() {
+        List<String> list= removeSpace();
+        for (int i = 0; i < list.size() - 1; i++) {
+            String current = list.get(i);
+            String next = list.get(i + 1);
+            if (current.compareTo(next) > 0) {
+                return false; // If current > next, list is not in ascending order
+            }
+        }
+        return true; // If loop completes, list is in ascending order
+    }
+
+    @Override
+    public boolean isDescendingNameSorted() {
+        return false;
+    }
+
+    @Override
+    public List<ExtendedWebElement> createNameList() {
+        return name;
     }
 
     @Override
