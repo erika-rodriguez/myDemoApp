@@ -108,11 +108,6 @@ public class CatalogScreen extends CatalogScreenBase {
     }
 
     @Override
-    public boolean isDescendingNameSorted() {
-        return false;
-    }
-
-    @Override
     public List<ExtendedWebElement> createNameList() {
         return name;
     }
