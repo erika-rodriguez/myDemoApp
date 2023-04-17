@@ -7,4 +7,6 @@ public abstract class CartScreenBase extends AbstractPage {
     public CartScreenBase(WebDriver driver) {
         super(driver);
     }
+
+    public abstract boolean isProductAdded();
 }

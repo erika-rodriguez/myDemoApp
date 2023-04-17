@@ -2,7 +2,6 @@ package com.solvd;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.dataprovider.annotations.CsvDataSourceParameters;
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.solvd.mobile.common.*;
 import com.zebrunner.agent.core.annotation.Maintainer;
 import com.zebrunner.agent.core.registrar.Screenshot;
@@ -176,4 +175,15 @@ public class MenuTest implements IAbstractTest {
 
         Assert.assertTrue(sortedCatalog.isCatalogDescendingNameSorted(),"Catalog's names are not sorted in descending order.");
     }
+
+    @Test(description = "[TC16]-testAddProductToCart")
+    public void testAddProductToCart(){
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        ProductScreenBase product=catalog.clickOnProduct();
+        product.clickOnAddToCartBtn();
+        CartScreenBase cart= catalog.clickOnCart();
+
+        Assert.assertTrue(cart.isProductAdded(),"The product was not added to the cart.");
+    }
+
 }
