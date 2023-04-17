@@ -157,7 +157,7 @@ public class MenuTest implements IAbstractTest {
         Assert.assertTrue(sortedCatalog.isCatalogDescendingSorted(), "The catalog is not sorted in descending order.");
     }
 
-    @Test(description = "[TC-]-testAscendingNameButton")
+    @Test(description = "[TC-15]-testAscendingNameButton")
     public void testAscendingNameButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
 
