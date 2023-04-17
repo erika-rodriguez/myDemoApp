@@ -13,7 +13,6 @@ public class ProductScreen extends ProductScreenBase {
     public ProductScreen(WebDriver driver) {
         super(driver);
     }
-
     @Override
     public void clickOnAddToCartBtn() {
         addToCartBtn.click();

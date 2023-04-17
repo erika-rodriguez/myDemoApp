@@ -8,5 +8,7 @@ public abstract class CartScreenBase extends AbstractPage {
         super(driver);
     }
 
+    public abstract NoItemScreenBase clickOnRemove();
+
     public abstract boolean isProductAdded();
 }

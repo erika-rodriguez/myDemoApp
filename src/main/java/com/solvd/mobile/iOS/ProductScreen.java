@@ -11,8 +11,6 @@ public class ProductScreen extends ProductScreenBase{
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"Add To Cart\"`]")
     private ExtendedWebElement addToCartBtn;
 
-
-
     public ProductScreen(WebDriver driver) {
         super(driver);
     }

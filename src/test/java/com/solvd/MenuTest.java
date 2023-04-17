@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import java.lang.invoke.MethodHandles;
 import java.util.HashMap;
 
@@ -168,12 +169,22 @@ public class MenuTest implements IAbstractTest {
     }
 
     @Test(description = "[TC12]-testDescendingNameOrder")
-    public void testDescendingNameOrder(){
+    public void testDescendingNameOrder() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
-        SortingScreenBase sortingOptions =catalog.clickOnSortingItem();
-        CatalogScreenBase sortedCatalog=sortingOptions.clickOnNameDescendingOrder();
+        SortingScreenBase sortingOptions = catalog.clickOnSortingItem();
+        CatalogScreenBase sortedCatalog = sortingOptions.clickOnNameDescendingOrder();
 
-        Assert.assertTrue(sortedCatalog.isCatalogDescendingNameSorted(),"Catalog's names are not sorted in descending order.");
+        Assert.assertTrue(sortedCatalog.isCatalogDescendingNameSorted(), "Catalog's names are not sorted in descending order.");
+    }
+
+    @Test(description = "[TC17]-testRemoveProductFromCartButton",dependsOnMethods = "testAddProductToCart")
+    public void testRemoveProductFromCartButton() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        CartScreenBase product = catalog.clickOnCart();
+        NoItemScreenBase noItemScreenBase = product.clickOnRemove();
+        Assert.assertTrue(noItemScreenBase.isElementPresent(),"The product was not deleted");
+
+
     }
 
     @Test(description = "[TC16]-testAddProductToCart")

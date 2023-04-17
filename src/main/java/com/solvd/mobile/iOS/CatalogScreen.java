@@ -2,6 +2,7 @@ package com.solvd.mobile.iOS;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.foundation.webdriver.locator.ExtendedFindBy;
+import com.solvd.mobile.common.CartScreenBase;
 import com.solvd.mobile.common.*;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
@@ -14,8 +15,6 @@ import java.util.stream.Collectors;
 public class CatalogScreen extends CatalogScreenBase {
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`name == \"More-tab-item\"`]")
     private ExtendedWebElement menuBtn;
-    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`name == \"Cart-tab-item\"`]")
-    private ExtendedWebElement cartBtn;
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"Products\"`]")
     private ExtendedWebElement products;
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"Button\"`]")
@@ -24,10 +23,15 @@ public class CatalogScreen extends CatalogScreenBase {
     private List<ExtendedWebElement> price;
     @FindBy(xpath = "//*[contains(@name, 'Sauce Lab')]")
     private List<ExtendedWebElement> name;
+
     @FindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, 'Sauce')]")
     private List<ExtendedWebElement>  namesList;
+
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"Linkedin Icons\"`]\n")
     private ExtendedWebElement linkedinIcon;
+
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`name == \"Cart-tab-item\"`]")
+    private ExtendedWebElement cartIcon;
 
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == \"ProductItem\"`][1]")
     private ExtendedWebElement firstProduct;
@@ -40,12 +44,6 @@ public class CatalogScreen extends CatalogScreenBase {
     public MenuScreenBase clickOnMenu() {
         menuBtn.click();
         return initPage(getDriver(), MenuScreenBase.class);
-    }
-
-    @Override
-    public CartScreenBase clickOnCart() {
-        cartBtn.click();
-        return initPage(getDriver(), CartScreenBase.class);
     }
 
     @Override
@@ -73,7 +71,7 @@ public class CatalogScreen extends CatalogScreenBase {
 
     @Override
     public List<String> turnIntoStringList(List<ExtendedWebElement> originalList) {
-        return originalList.stream().map(e->e.getText()).collect(Collectors.toList());
+        return originalList.stream().map(e -> e.getText()).collect(Collectors.toList());
     }
 
     @Override
@@ -99,7 +97,7 @@ public class CatalogScreen extends CatalogScreenBase {
 
     @Override
     public boolean isAscendingNameSorted() {
-        List<String> list= removeSpace();
+        List<String> list = removeSpace();
         for (int i = 0; i < list.size() - 1; i++) {
             String current = list.get(i);
             String next = list.get(i + 1);
@@ -128,9 +126,9 @@ public class CatalogScreen extends CatalogScreenBase {
 
     @Override
     public boolean isCatalogDescendingNameSorted() {
-        List<String> namesList=turnIntoStringList(createNamesList());
-        for (int i = 0; i < namesList.size()-1; i++) {
-            if (namesList.get(i).compareTo(namesList.get(i+1))>0){
+        List<String> namesList = turnIntoStringList(createNamesList());
+        for (int i = 0; i < namesList.size() - 1; i++) {
+            if (namesList.get(i).compareTo(namesList.get(i + 1)) > 0) {
                 return true;
             }
         }
@@ -141,5 +139,11 @@ public class CatalogScreen extends CatalogScreenBase {
     public ProductScreenBase clickOnProduct() {
         firstProduct.click();
         return initPage(getDriver(), ProductScreenBase.class);
+    }
+
+    @Override
+    public CartScreenBase clickOnCart() {
+        cartIcon.click();
+        return initPage(getDriver(), CartScreenBase.class);
     }
 }
