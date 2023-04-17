@@ -2,9 +2,7 @@ package com.solvd.mobile.android;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.solvd.mobile.common.CartScreenBase;
-import com.solvd.mobile.common.CatalogScreenBase;
-import com.solvd.mobile.common.MenuScreenBase;
-import com.solvd.mobile.common.SortingScreenBase;
+import com.solvd.mobile.common.*;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -19,6 +17,8 @@ public class CatalogScreen extends CatalogScreenBase {
 
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/menuIV")
     private ExtendedWebElement menu;
+    @FindBy(id = "com.saucelabs.mydemoapp.android:id/cartIV")
+    private ExtendedWebElement cartIcon;
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/productTV")
     private ExtendedWebElement productTitle;
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/priceTV")
@@ -30,13 +30,23 @@ public class CatalogScreen extends CatalogScreenBase {
     @FindBy(xpath = "//*[contains(@name, 'Sauce Lab')]")
     private List<ExtendedWebElement> name;
 
-    @FindBy(id = "com.saucelabs.mydemoapp.android:id/cartIV")
-    private ExtendedWebElement cartIcon;
+    @FindBy(xpath = "//*[contains(@content-desc, 'Sauce Lab')]")
+    private List<ExtendedWebElement> products;
+
+
+//    @FindBy(id = "com.saucelabs.mydemoapp.android:id/cartIV")
+//    private ExtendedWebElement cartIcon;
 
     @Override
     public MenuScreenBase clickOnMenu() {
         menu.click();
         return initPage(getDriver(), MenuScreenBase.class);
+    }
+
+    @Override
+    public CartScreenBase clickOnCart() {
+        cartIcon.click();
+        return initPage(getDriver(), CartScreenBase.class);
     }
 
     @Override
@@ -127,9 +137,15 @@ public class CatalogScreen extends CatalogScreenBase {
         return false;
     }
 
+//    @Override
+//    public CartScreenBase clickOnCart() {
+//       cartIcon.click();
+//        return initPage(getDriver(), CartScreenBase.class);
+//    }
+
     @Override
-    public CartScreenBase clickOnCart() {
-       cartIcon.click();
-        return initPage(getDriver(), CartScreenBase.class);
+    public ProductScreenBase clickOnProduct() {
+        products.get(0).click();
+        return initPage(getDriver(), ProductScreenBase.class);
     }
 }

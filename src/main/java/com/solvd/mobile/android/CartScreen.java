@@ -9,6 +9,8 @@ import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = CartScreenBase.class)
 public class CartScreen extends CartScreenBase {
+    @FindBy(id = "com.saucelabs.mydemoapp.android:id/noTV")
+    private ExtendedWebElement addedItems;
 
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/removeBt")
     private ExtendedWebElement removeButton;
@@ -22,5 +24,9 @@ public class CartScreen extends CartScreenBase {
        removeButton.click();
 
         return initPage(getDriver(), NoItemScreenBase.class);
+    }
+    @Override
+    public boolean isProductAdded() {
+        return addedItems.isElementPresent();
     }
 }

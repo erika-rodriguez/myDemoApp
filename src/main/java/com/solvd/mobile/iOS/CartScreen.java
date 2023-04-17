@@ -4,11 +4,14 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.foundation.webdriver.locator.ExtendedFindBy;
 import com.solvd.mobile.common.CartScreenBase;
 import com.solvd.mobile.common.NoItemScreenBase;
+import com.solvd.mobile.common.NoItemScreenBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = CartScreenBase.class)
 public class CartScreen extends CartScreenBase{
+    @ExtendedFindBy(iosPredicate = "type == \"XCUIElementTypeCell\"")
+    private ExtendedWebElement addedItem;
     public CartScreen(WebDriver driver) {
         super(driver);
     }
@@ -19,5 +22,10 @@ public class CartScreen extends CartScreenBase{
     public NoItemScreenBase clickOnRemove() {
       removeButton.click();
         return initPage(getDriver(), NoItemScreenBase.class);
+    }
+
+    @Override
+    public boolean isProductAdded() {
+        return addedItem.isElementPresent();
     }
 }

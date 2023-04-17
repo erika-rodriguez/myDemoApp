@@ -14,6 +14,7 @@ public abstract class CatalogScreenBase extends AbstractPage implements IMobileU
     }
 
     public abstract MenuScreenBase clickOnMenu();
+    public abstract CartScreenBase clickOnCart();
     public abstract boolean isPageOpened();
     public abstract SortingScreenBase clickOnSortingItem();
     public abstract List<Double> removeDollarSymbol(List<ExtendedWebElement> originalList);
@@ -27,5 +28,5 @@ public abstract class CatalogScreenBase extends AbstractPage implements IMobileU
     public abstract boolean isAscendingNameSorted();
     public abstract List<ExtendedWebElement> createNameList();
     public abstract boolean isCatalogDescendingNameSorted();
-    public abstract CartScreenBase clickOnCart();
+    public abstract ProductScreenBase clickOnProduct();
 }

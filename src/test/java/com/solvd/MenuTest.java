@@ -186,4 +186,15 @@ public class MenuTest implements IAbstractTest {
 
 
     }
+
+    @Test(description = "[TC16]-testAddProductToCart")
+    public void testAddProductToCart(){
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        ProductScreenBase product=catalog.clickOnProduct();
+        product.clickOnAddToCartBtn();
+        CartScreenBase cart= catalog.clickOnCart();
+
+        Assert.assertTrue(cart.isProductAdded(),"The product was not added to the cart.");
+    }
+
 }

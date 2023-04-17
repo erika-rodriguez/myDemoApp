@@ -9,4 +9,6 @@ public abstract class CartScreenBase extends AbstractPage {
     }
 
     public abstract NoItemScreenBase clickOnRemove();
+
+    public abstract boolean isProductAdded();
 }
