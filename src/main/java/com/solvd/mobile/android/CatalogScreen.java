@@ -7,7 +7,6 @@ import com.solvd.mobile.common.SortingScreenBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,6 +22,8 @@ public class CatalogScreen extends CatalogScreenBase {
     private ExtendedWebElement productTitle;
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/priceTV")
     private List<ExtendedWebElement> pricesList;
+    @FindBy(id = "com.saucelabs.mydemoapp.android:id/titleTV")
+    private List<ExtendedWebElement> namesList;
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/sortIV")
     private ExtendedWebElement sortingOrderButton;
     @FindBy(xpath = "//*[contains(@name, 'Sauce Lab')]")
@@ -58,8 +59,18 @@ public class CatalogScreen extends CatalogScreenBase {
     }
 
     @Override
+    public List<String> turnIntoStringList(List<ExtendedWebElement> originalList) {
+        return originalList.stream().map(e->e.getText()).collect(Collectors.toList());
+    }
+
+    @Override
     public List<ExtendedWebElement> createList() {
         return pricesList;
+    }
+
+    @Override
+    public List<ExtendedWebElement> createNamesList() {
+        return namesList;
     }
 
     @Override
@@ -104,5 +115,16 @@ public class CatalogScreen extends CatalogScreenBase {
     @Override
     public List<ExtendedWebElement> createNameList() {
         return name;
+    }
+
+    @Override
+    public boolean isCatalogDescendingNameSorted() {
+        List<String> namesList=turnIntoStringList(createNamesList());
+        for (int i = 0; i < namesList.size()-1; i++) {
+            if (namesList.get(i).compareTo(namesList.get(i+1))>0){
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -7,8 +7,6 @@ import com.solvd.mobile.common.SortingScreenBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 
-import java.util.List;
-
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = SortingScreenBase.class)
 public class SortingScreen extends SortingScreenBase {
 
@@ -20,6 +18,9 @@ public class SortingScreen extends SortingScreenBase {
 
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"Name - Ascending\"`]")
     private ExtendedWebElement ascendingNameButton;
+
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"Name - Descending\"`]")
+    private ExtendedWebElement descendingNameButton;
 
     public SortingScreen(WebDriver driver) {
         super(driver);
@@ -40,6 +41,12 @@ public class SortingScreen extends SortingScreenBase {
     @Override
     public CatalogScreenBase clickOnNameAscendingOption() {
         ascendingNameButton.click();
+        return initPage(getDriver(), CatalogScreenBase.class);
+    }
+
+    @Override
+    public CatalogScreenBase clickOnNameDescendingOrder() {
+        descendingNameButton.click();
         return initPage(getDriver(), CatalogScreenBase.class);
     }
 }

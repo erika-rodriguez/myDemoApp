@@ -14,17 +14,17 @@ public abstract class CatalogScreenBase extends AbstractPage implements IMobileU
     }
 
     public abstract MenuScreenBase clickOnMenu();
-
     public abstract boolean isPageOpened();
-
     public abstract SortingScreenBase clickOnSortingItem();
-
     public abstract List<Double> removeDollarSymbol(List<ExtendedWebElement> originalList);
+    public abstract List<String> turnIntoStringList(List<ExtendedWebElement> originalList);
     public abstract List<String> removeSpace();
     public abstract List<ExtendedWebElement> createList();
+    public abstract List<ExtendedWebElement> createNamesList();
     public abstract boolean isCatalogAscendingSorted();
+
     public abstract boolean isCatalogDescendingSorted();
     public abstract boolean isAscendingNameSorted();
-    public abstract boolean isDescendingNameSorted();
     public abstract List<ExtendedWebElement> createNameList();
+    public abstract boolean isCatalogDescendingNameSorted();
 }
