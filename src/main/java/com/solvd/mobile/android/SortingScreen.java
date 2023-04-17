@@ -14,6 +14,8 @@ public class SortingScreen extends SortingScreenBase {
     private ExtendedWebElement ascendingPriceButton;
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/menuPriceDscIV")
     private ExtendedWebElement descendingPriceButton;
+    @FindBy(id = "com.saucelabs.mydemoapp.android:id/menuNameAscIV")
+    private ExtendedWebElement ascendingNameButton;
 
     public SortingScreen(WebDriver driver) {
         super(driver);
@@ -28,6 +30,12 @@ public class SortingScreen extends SortingScreenBase {
     @Override
     public CatalogScreenBase clickOnPriceDescendingOrder() {
         descendingPriceButton.click();
+        return initPage(getDriver(), CatalogScreenBase.class);
+    }
+
+    @Override
+    public CatalogScreenBase clickOnNameAscendingOption() {
+       ascendingNameButton.click();
         return initPage(getDriver(), CatalogScreenBase.class);
     }
 }
