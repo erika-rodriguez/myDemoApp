@@ -1,6 +1,7 @@
 package com.solvd.mobile.android;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.solvd.mobile.common.CartScreenBase;
 import com.solvd.mobile.common.CatalogScreenBase;
 import com.solvd.mobile.common.MenuScreenBase;
 import com.solvd.mobile.common.SortingScreenBase;
@@ -28,6 +29,9 @@ public class CatalogScreen extends CatalogScreenBase {
     private ExtendedWebElement sortingOrderButton;
     @FindBy(xpath = "//*[contains(@name, 'Sauce Lab')]")
     private List<ExtendedWebElement> name;
+
+    @FindBy(id = "com.saucelabs.mydemoapp.android:id/cartIV")
+    private ExtendedWebElement cartIcon;
 
     @Override
     public MenuScreenBase clickOnMenu() {
@@ -121,5 +125,11 @@ public class CatalogScreen extends CatalogScreenBase {
             }
         }
         return false;
+    }
+
+    @Override
+    public CartScreenBase clickOnCart() {
+       cartIcon.click();
+        return initPage(getDriver(), CartScreenBase.class);
     }
 }

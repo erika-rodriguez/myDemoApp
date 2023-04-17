@@ -2,6 +2,7 @@ package com.solvd.mobile.iOS;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.foundation.webdriver.locator.ExtendedFindBy;
+import com.solvd.mobile.common.CartScreenBase;
 import com.solvd.mobile.common.CatalogScreenBase;
 import com.solvd.mobile.common.MenuScreenBase;
 import com.solvd.mobile.common.SortingScreenBase;
@@ -29,12 +30,14 @@ public class CatalogScreen extends CatalogScreenBase {
 
     @FindBy(xpath = "//*[contains(@name, 'Sauce Lab')]")
     private List<ExtendedWebElement> name;
-    private List<ExtendedWebElement>  price;
 
     @FindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, 'Sauce')]")
-    private List<ExtendedWebElement>  namesList;
+    private List<ExtendedWebElement> namesList;
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"Linkedin Icons\"`]\n")
     private ExtendedWebElement linkedinIcon;
+
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`name == \"Cart-tab-item\"`]")
+    private ExtendedWebElement cartIcon;
 
     public CatalogScreen(WebDriver driver) {
         super(driver);
@@ -71,7 +74,7 @@ public class CatalogScreen extends CatalogScreenBase {
 
     @Override
     public List<String> turnIntoStringList(List<ExtendedWebElement> originalList) {
-        return originalList.stream().map(e->e.getText()).collect(Collectors.toList());
+        return originalList.stream().map(e -> e.getText()).collect(Collectors.toList());
     }
 
     @Override
@@ -97,7 +100,7 @@ public class CatalogScreen extends CatalogScreenBase {
 
     @Override
     public boolean isAscendingNameSorted() {
-        List<String> list= removeSpace();
+        List<String> list = removeSpace();
         for (int i = 0; i < list.size() - 1; i++) {
             String current = list.get(i);
             String next = list.get(i + 1);
@@ -126,12 +129,18 @@ public class CatalogScreen extends CatalogScreenBase {
 
     @Override
     public boolean isCatalogDescendingNameSorted() {
-        List<String> namesList=turnIntoStringList(createNamesList());
-        for (int i = 0; i < namesList.size()-1; i++) {
-            if (namesList.get(i).compareTo(namesList.get(i+1))>0){
+        List<String> namesList = turnIntoStringList(createNamesList());
+        for (int i = 0; i < namesList.size() - 1; i++) {
+            if (namesList.get(i).compareTo(namesList.get(i + 1)) > 0) {
                 return true;
             }
         }
         return false;
+    }
+
+    @Override
+    public CartScreenBase clickOnCart() {
+        cartIcon.click();
+        return initPage(getDriver(), CartScreenBase.class);
     }
 }
