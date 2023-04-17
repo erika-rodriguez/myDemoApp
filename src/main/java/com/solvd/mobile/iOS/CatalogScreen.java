@@ -26,6 +26,9 @@ public class CatalogScreen extends CatalogScreenBase {
 
     @FindBy(xpath = "//*[contains(@name, '$')]")
     private List<ExtendedWebElement>  price;
+
+    @FindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, 'Sauce')]")
+    private List<ExtendedWebElement>  namesList;
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"Linkedin Icons\"`]\n")
     private ExtendedWebElement linkedinIcon;
 
@@ -58,8 +61,18 @@ public class CatalogScreen extends CatalogScreenBase {
     }
 
     @Override
+    public List<String> turnIntoStringList(List<ExtendedWebElement> originalList) {
+        return originalList.stream().map(e->e.getText()).collect(Collectors.toList());
+    }
+
+    @Override
     public List<ExtendedWebElement> createList() {
         return price;
+    }
+
+    @Override
+    public List<ExtendedWebElement> createNamesList() {
+        return namesList;
     }
 
     @Override
@@ -78,6 +91,17 @@ public class CatalogScreen extends CatalogScreenBase {
         List<Double> ascendingSortedList=removeDollarSymbol(createList());
         for (int i = 0; i < ascendingSortedList.size()-1; i++) {
             if (ascendingSortedList.get(i)>ascendingSortedList.get(i+1)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean isCatalogDescendingNameSorted() {
+        List<String> namesList=turnIntoStringList(createNamesList());
+        for (int i = 0; i < namesList.size()-1; i++) {
+            if (namesList.get(i).compareTo(namesList.get(i+1))>0){
                 return true;
             }
         }

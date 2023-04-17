@@ -4,7 +4,6 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import org.openqa.selenium.WebDriver;
-
 import java.util.List;
 
 public abstract class CatalogScreenBase extends AbstractPage implements IMobileUtils {
@@ -21,8 +20,12 @@ public abstract class CatalogScreenBase extends AbstractPage implements IMobileU
 
     public abstract List<Double> removeDollarSymbol(List<ExtendedWebElement> originalList);
 
+    public abstract List<String> turnIntoStringList(List<ExtendedWebElement> originalList);
+
     public abstract List<ExtendedWebElement> createList();
+    public abstract List<ExtendedWebElement> createNamesList();
     public abstract boolean isCatalogAscendingSorted();
 
     public abstract boolean isCatalogDescendingSorted();
+    public abstract boolean isCatalogDescendingNameSorted();
 }

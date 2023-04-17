@@ -13,7 +13,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.lang.invoke.MethodHandles;
 import java.util.HashMap;
 
@@ -155,5 +154,14 @@ public class MenuTest implements IAbstractTest {
 
         CatalogScreenBase sortedCatalog = sortingOptions.clickOnPriceDescendingOrder();
         Assert.assertTrue(sortedCatalog.isCatalogDescendingSorted(), "The catalog is not sorted in descending order.");
+    }
+
+    @Test(description = "[TC12]-testDescendingNameOrder")
+    public void testDescendingNameOrder(){
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        SortingScreenBase sortingOptions =catalog.clickOnSortingItem();
+        CatalogScreenBase sortedCatalog=sortingOptions.clickOnNameDescendingOrder();
+
+        Assert.assertTrue(sortedCatalog.isCatalogDescendingNameSorted(),"Catalog's names are not sorted in descending order.");
     }
 }
