@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 import java.lang.invoke.MethodHandles;
 import java.util.HashMap;
 
-public class MenuTest implements IAbstractTest{
+public class MenuTest implements IAbstractTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     @Test(description = "[TC01]-testAboutButton")
@@ -140,20 +140,20 @@ public class MenuTest implements IAbstractTest{
     @Test(description = "[TC14]-testAscendingPriceButton")
     public void testAscendingPriceButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
-        SortingScreenBase sortingOptions =catalog.clickOnSortingItem();
-        CatalogScreenBase sortedCatalog=sortingOptions.clickOnPriceAscendingOrder();
+        SortingScreenBase sortingOptions = catalog.clickOnSortingItem();
+        CatalogScreenBase sortedCatalog = sortingOptions.clickOnPriceAscendingOrder();
 
-        Assert.assertTrue(sortedCatalog.isCatalogAscendingSorted(),"The catalog is not sorted in ascending order.");
+        Assert.assertTrue(sortedCatalog.isCatalogAscendingSorted(), "The catalog is not sorted in ascending order.");
 
     }
 
     @Test(description = "[TC13]-testDescendingPriceOrder")
-    public void testDescendingPriceOrder(){
+    public void testDescendingPriceOrder() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
-        SortingScreenBase sortingOptions =catalog.clickOnSortingItem();
-        CatalogScreenBase sortedCatalog=sortingOptions.clickOnPriceDescendingOrder();
+        SortingScreenBase sortingOptions = catalog.clickOnSortingItem();
 
-        Assert.assertTrue(sortedCatalog.isCatalogDescendingSorted(),"The catalog is not sorted in descending order.");
+        CatalogScreenBase sortedCatalog = sortingOptions.clickOnPriceDescendingOrder();
+        Assert.assertTrue(sortedCatalog.isCatalogDescendingSorted(), "The catalog is not sorted in descending order.");
     }
 
     @Test(description = "[TC12]-testDescendingNameOrder")
