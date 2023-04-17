@@ -5,12 +5,7 @@ import com.solvd.mobile.common.CatalogScreenBase;
 import com.solvd.mobile.common.SortingScreenBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE,parentClass = SortingScreenBase.class)
 public class SortingScreen extends SortingScreenBase {
@@ -19,6 +14,8 @@ public class SortingScreen extends SortingScreenBase {
     private ExtendedWebElement ascendingPriceButton;
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/menuPriceDscIV")
     private ExtendedWebElement descendingPriceButton;
+    @FindBy(id = "com.saucelabs.mydemoapp.android:id/menuNameDesIV")
+    private ExtendedWebElement descendingNameButton;
 
     public SortingScreen(WebDriver driver) {
         super(driver);
@@ -33,6 +30,12 @@ public class SortingScreen extends SortingScreenBase {
     @Override
     public CatalogScreenBase clickOnPriceDescendingOrder() {
         descendingPriceButton.click();
+        return initPage(getDriver(), CatalogScreenBase.class);
+    }
+
+    @Override
+    public CatalogScreenBase clickOnNameDescendingOrder() {
+        descendingNameButton.click();
         return initPage(getDriver(), CatalogScreenBase.class);
     }
 }

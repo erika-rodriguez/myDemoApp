@@ -56,7 +56,17 @@ public class CatalogScreen extends CatalogScreenBase {
     }
 
     @Override
+    public List<String> turnIntoStringList(List<ExtendedWebElement> originalList) {
+        return null;
+    }
+
+    @Override
     public List<ExtendedWebElement> createList() {
+        return null;
+    }
+
+    @Override
+    public List<ExtendedWebElement> createNamesList() {
         return null;
     }
 
@@ -67,6 +77,11 @@ public class CatalogScreen extends CatalogScreenBase {
 
     @Override
     public boolean isCatalogDescendingSorted() {
+        return false;
+    }
+
+    @Override
+    public boolean isCatalogDescendingNameSorted() {
         return false;
     }
 }
