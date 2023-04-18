@@ -35,6 +35,10 @@ public class CatalogScreen extends CatalogScreenBase {
 
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == \"ProductItem\"`][1]")
     private ExtendedWebElement firstProduct;
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"StarSelected Icons\"`][1]")
+    private ExtendedWebElement oneStarBtn;
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"Thank you for submitting your review!\"`]")
+    private ExtendedWebElement reviewSubmittedTxt;
 
     public CatalogScreen(WebDriver driver) {
         super(driver);
@@ -142,13 +146,13 @@ public class CatalogScreen extends CatalogScreenBase {
     }
 
     @Override
-    public void clickOnStarReview() {
-
+    public void clickOneStarReview() {
+        oneStarBtn.click();
     }
 
     @Override
     public boolean isReviewSubmitted() {
-        return false;
+        return reviewSubmittedTxt.isElementPresent();
     }
 
     @Override

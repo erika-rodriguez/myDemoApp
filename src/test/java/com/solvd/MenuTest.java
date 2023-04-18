@@ -199,8 +199,9 @@ public class MenuTest implements IAbstractTest {
     @Test(description = "[TC19]-testSubmitReviewButton")
     public void testSubmitReviewButton(){
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
-        catalog.clickOnStarReview();
-        catalog.isReviewSubmitted();
+        catalog.clickOneStarReview();
+
+        Assert.assertTrue(catalog.isReviewSubmitted(),"The review was not submitted.");
     }
 
 

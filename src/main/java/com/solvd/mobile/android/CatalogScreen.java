@@ -155,7 +155,7 @@ public class CatalogScreen extends CatalogScreenBase {
     }
 
     @Override
-    public void clickOnStarReview() {
+    public void clickOneStarReview() {
         oneStarBtn.click();
     }
 

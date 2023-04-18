@@ -30,6 +30,6 @@ public abstract class CatalogScreenBase extends AbstractPage implements IMobileU
     public abstract boolean isCatalogDescendingNameSorted();
     public abstract ProductScreenBase clickOnProduct();
 
-    public abstract void clickOnStarReview();
+    public abstract void clickOneStarReview();
     public abstract boolean isReviewSubmitted();
 }
