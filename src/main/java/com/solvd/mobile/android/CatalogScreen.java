@@ -35,8 +35,7 @@ public class CatalogScreen extends CatalogScreenBase {
 
     @FindBy(xpath = "//*[@resource-id='com.saucelabs.mydemoapp.android:id/start1IV']")
     private ExtendedWebElement oneStarBtn;
-    @FindBy(xpath = "//*[@resource-id='com.saucelabs.mydemoapp.android:id/sortTV")
-    private ExtendedWebElement reviewSubmittedTxt;
+
 
 
 //    @FindBy(id = "com.saucelabs.mydemoapp.android:id/cartIV")
@@ -155,12 +154,10 @@ public class CatalogScreen extends CatalogScreenBase {
     }
 
     @Override
-    public void clickOneStarReview() {
+    public ReviewSubmittedMessageBase clickOneStarReview() {
         oneStarBtn.click();
+        return initPage(getDriver(), ReviewSubmittedMessageBase.class);
     }
 
-    @Override
-    public boolean isReviewSubmitted() {
-        return reviewSubmittedTxt.isVisible();
-    }
+
 }
