@@ -142,6 +142,16 @@ public class CatalogScreen extends CatalogScreenBase {
     }
 
     @Override
+    public void clickOnStarReview() {
+
+    }
+
+    @Override
+    public boolean isReviewSubmitted() {
+        return false;
+    }
+
+    @Override
     public CartScreenBase clickOnCart() {
         cartIcon.click();
         return initPage(getDriver(), CartScreenBase.class);

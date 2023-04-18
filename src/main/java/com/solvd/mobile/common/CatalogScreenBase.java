@@ -29,4 +29,7 @@ public abstract class CatalogScreenBase extends AbstractPage implements IMobileU
     public abstract List<ExtendedWebElement> createNameList();
     public abstract boolean isCatalogDescendingNameSorted();
     public abstract ProductScreenBase clickOnProduct();
+
+    public abstract void clickOnStarReview();
+    public abstract boolean isReviewSubmitted();
 }
