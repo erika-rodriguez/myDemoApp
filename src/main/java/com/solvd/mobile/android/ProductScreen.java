@@ -18,9 +18,15 @@ public class ProductScreen extends ProductScreenBase {
     private ExtendedWebElement addItemIcon;
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/noTV")
     private ExtendedWebElement itemsCount;
+    @FindBy(id = "com.saucelabs.mydemoapp.android:id/noTV")
+    private ExtendedWebElement amount;
+    @FindBy(id = "com.saucelabs.mydemoapp.android:id/plusIV")
+    private ExtendedWebElement plusButton;
+
     public ProductScreen(WebDriver driver) {
         super(driver);
     }
+
     @Override
     public void clickOnAddToCartBtn() {
         addToCartBtn.click();
@@ -39,5 +45,16 @@ public class ProductScreen extends ProductScreenBase {
     public int isItemAdded() {
         int amount=Integer.valueOf(itemsCount.getText());
         return amount;
+    }
+
+    public void clickOnPlusButton() {
+        plusButton.click();
+    }
+
+    @Override
+    public int productAmount() {
+        String x = amount.getText();
+        int x1= Integer.parseInt(x);
+        return x1;
     }
 }

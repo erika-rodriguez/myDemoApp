@@ -11,22 +11,29 @@ import java.util.stream.Collectors;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = CatalogScreenBase.class)
 public class CatalogScreen extends CatalogScreenBase {
-    public CatalogScreen(WebDriver driver) {
+ 
+ public CatalogScreen(WebDriver driver) {
         super(driver);
     }
 
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/menuIV")
     private ExtendedWebElement menu;
+    
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/cartIV")
     private ExtendedWebElement cartIcon;
+    
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/productTV")
     private ExtendedWebElement productTitle;
+    
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/priceTV")
     private List<ExtendedWebElement> pricesList;
+    
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/titleTV")
     private List<ExtendedWebElement> namesList;
+    
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/sortIV")
     private ExtendedWebElement sortingOrderButton;
+    
     @FindBy(xpath = "//*[contains(@name, 'Sauce Lab')]")
     private List<ExtendedWebElement> name;
 
@@ -35,11 +42,6 @@ public class CatalogScreen extends CatalogScreenBase {
 
     @FindBy(xpath = "//*[@resource-id='com.saucelabs.mydemoapp.android:id/start1IV']")
     private ExtendedWebElement oneStarBtn;
-
-
-
-//    @FindBy(id = "com.saucelabs.mydemoapp.android:id/cartIV")
-//    private ExtendedWebElement cartIcon;
 
     @Override
     public MenuScreenBase clickOnMenu() {
@@ -140,13 +142,6 @@ public class CatalogScreen extends CatalogScreenBase {
         }
         return false;
     }
-
-//    @Override
-//    public CartScreenBase clickOnCart() {
-//       cartIcon.click();
-//        return initPage(getDriver(), CartScreenBase.class);
-//    }
-
     @Override
     public ProductScreenBase clickOnProduct() {
         products.get(0).click();

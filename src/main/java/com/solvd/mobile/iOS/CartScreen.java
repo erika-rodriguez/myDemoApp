@@ -1,26 +1,40 @@
 package com.solvd.mobile.iOS;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.qaprosoft.carina.core.foundation.webdriver.decorator.annotations.Predicate;
 import com.qaprosoft.carina.core.foundation.webdriver.locator.ExtendedFindBy;
 import com.solvd.mobile.common.CartScreenBase;
 import com.solvd.mobile.common.NoItemScreenBase;
-import com.solvd.mobile.common.NoItemScreenBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = CartScreenBase.class)
-public class CartScreen extends CartScreenBase{
+public class CartScreen extends CartScreenBase {
     @ExtendedFindBy(iosPredicate = "type == \"XCUIElementTypeCell\"")
     private ExtendedWebElement addedItem;
+
     public CartScreen(WebDriver driver) {
         super(driver);
     }
 
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"Remove Item\"`]")
     private ExtendedWebElement removeButton;
+
+    @ExtendedFindBy(iosPredicate = "label == \"AddPlus Icons\"")
+    private ExtendedWebElement plusbutton;
+
+    @FindBy(xpath = "//*[contains(@name, '$')]")
+    private List<ExtendedWebElement>price;
+
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"2\"`][1]")
+    private ExtendedWebElement productAmount;
+
     @Override
     public NoItemScreenBase clickOnRemove() {
-      removeButton.click();
+        removeButton.click();
         return initPage(getDriver(), NoItemScreenBase.class);
     }
 
@@ -28,4 +42,25 @@ public class CartScreen extends CartScreenBase{
     public boolean isProductAdded() {
         return addedItem.isElementPresent();
     }
+
+    @Override
+    public void clickOnPlusButton() {
+        plusbutton.click();
+    }
+
+    @Override
+    public int calculatorSum() {
+        String x = price.get(1).getText();
+        String y = productAmount.getText();
+
+        String y2 = y.replace("$ ", "").replace(".", "");
+        String x2 = x.replace("$ ", "").replace(".", "");
+
+        int price = Integer.parseInt(y2);
+        int amount = Integer.parseInt(x2);
+
+        return price*amount;
+    }
+
+
 }
