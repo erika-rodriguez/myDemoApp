@@ -13,8 +13,7 @@ public class ProductScreen extends ProductScreenBase {
     @ExtendedFindBy(text = "Add to cart")
     private ExtendedWebElement addToCartBtn;
 
-    //@FindBy(xpath = "//*[resource-id='com.saucelabs.mydemoapp.android:id/start1IV']")
-    @FindBy(xpath = "//android.widget.FrameLayout[@content-desc=\"Container for fragments\"]/android.widget.ScrollView/android.view.ViewGroup/android.widget.LinearLayout[1]/android.view.ViewGroup/android.widget.LinearLayout/android.widget.ImageView[2]")
+    @FindBy(id = "com.saucelabs.mydemoapp.android:id/start1IV")
     private ExtendedWebElement oneStarBtn;
     public ProductScreen(WebDriver driver) {
         super(driver);
