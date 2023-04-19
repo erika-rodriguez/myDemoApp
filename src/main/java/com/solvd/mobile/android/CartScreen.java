@@ -21,9 +21,6 @@ public class CartScreen extends CartScreenBase {
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/priceTV")
     private ExtendedWebElement productPrice;
 
-    @FindBy(id = "com.saucelabs.mydemoapp.android:id/totalPriceTV")
-    private ExtendedWebElement calculatorResult;
-
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/noTV")
     private ExtendedWebElement productAmount;
 

@@ -33,13 +33,13 @@ public class MenuTest implements IAbstractTest {
     public void testQRScannerButton() throws Exception {
         LOGGER.info("Artifact's folder: {}", ReportContext.getArtifactsFolder().getAbsolutePath());
         LOGGER.info("Directory project : {}", ReportContext.getTestDir().getName());
+
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
         byte[] screenShot4 = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
         Screenshot.upload(screenShot4, null);
         MenuScreenBase menu = catalog.clickOnMenu();
         LOGGER.info("This is another logger info");
         QRCodeScreenBase qr = menu.clickOnQRCodeButton();
-
         Assert.assertTrue(qr.isQRCodeTxtVisible(), "The QR Screen is not opened");
     }
 
