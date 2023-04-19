@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = ReviewSubmittedMessageBase.class)
 public class ReviewSubmittedMessage extends ReviewSubmittedMessageBase {
-    @FindBy(xpath = "//*[@resource-id='com.saucelabs.mydemoapp.android:id/sortTV")
+    @FindBy(id = "com.saucelabs.mydemoapp.android:id/sortTV")
     private ExtendedWebElement reviewSubmittedTxt;
     public ReviewSubmittedMessage(WebDriver driver) {
         super(driver);
@@ -15,6 +15,6 @@ public class ReviewSubmittedMessage extends ReviewSubmittedMessageBase {
 
     @Override
     public boolean isReviewSubmitted() {
-        return reviewSubmittedTxt.isVisible();
+        return reviewSubmittedTxt.isElementPresent();
     }
 }
