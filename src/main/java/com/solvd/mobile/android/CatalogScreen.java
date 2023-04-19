@@ -33,10 +33,6 @@ public class CatalogScreen extends CatalogScreenBase {
     @FindBy(xpath = "//*[contains(@content-desc, 'Sauce Lab')]")
     private List<ExtendedWebElement> products;
 
-
-//    @FindBy(id = "com.saucelabs.mydemoapp.android:id/cartIV")
-//    private ExtendedWebElement cartIcon;
-
     @Override
     public MenuScreenBase clickOnMenu() {
         menu.click();
@@ -136,13 +132,6 @@ public class CatalogScreen extends CatalogScreenBase {
         }
         return false;
     }
-
-//    @Override
-//    public CartScreenBase clickOnCart() {
-//       cartIcon.click();
-//        return initPage(getDriver(), CartScreenBase.class);
-//    }
-
     @Override
     public ProductScreenBase clickOnProduct() {
         products.get(0).click();

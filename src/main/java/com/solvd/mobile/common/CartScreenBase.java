@@ -11,4 +11,8 @@ public abstract class CartScreenBase extends AbstractPage {
     public abstract NoItemScreenBase clickOnRemove();
 
     public abstract boolean isProductAdded();
+
+    public abstract void clickOnPlusButton();
+
+    public abstract boolean isCalculatorWorking();
 }
