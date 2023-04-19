@@ -35,6 +35,9 @@ public class CatalogScreen extends CatalogScreenBase {
 
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == \"ProductItem\"`][1]")
     private ExtendedWebElement firstProduct;
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"StarSelected Icons\"`][1]")
+    private ExtendedWebElement oneStarBtn;
+
 
     public CatalogScreen(WebDriver driver) {
         super(driver);
@@ -140,6 +143,14 @@ public class CatalogScreen extends CatalogScreenBase {
         firstProduct.click();
         return initPage(getDriver(), ProductScreenBase.class);
     }
+
+    @Override
+    public ReviewSubmittedMessageBase clickOneStarReview() {
+        oneStarBtn.click();
+        return initPage(getDriver(), ReviewSubmittedMessageBase.class);
+    }
+
+
 
     @Override
     public CartScreenBase clickOnCart() {

@@ -11,27 +11,37 @@ import java.util.stream.Collectors;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = CatalogScreenBase.class)
 public class CatalogScreen extends CatalogScreenBase {
-    public CatalogScreen(WebDriver driver) {
+ 
+ public CatalogScreen(WebDriver driver) {
         super(driver);
     }
 
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/menuIV")
     private ExtendedWebElement menu;
+    
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/cartIV")
     private ExtendedWebElement cartIcon;
+    
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/productTV")
     private ExtendedWebElement productTitle;
+    
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/priceTV")
     private List<ExtendedWebElement> pricesList;
+    
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/titleTV")
     private List<ExtendedWebElement> namesList;
+    
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/sortIV")
     private ExtendedWebElement sortingOrderButton;
+    
     @FindBy(xpath = "//*[contains(@name, 'Sauce Lab')]")
     private List<ExtendedWebElement> name;
 
     @FindBy(xpath = "//*[contains(@content-desc, 'Sauce Lab')]")
     private List<ExtendedWebElement> products;
+
+    @FindBy(xpath = "//*[@resource-id='com.saucelabs.mydemoapp.android:id/start1IV']")
+    private ExtendedWebElement oneStarBtn;
 
     @Override
     public MenuScreenBase clickOnMenu() {
@@ -137,4 +147,12 @@ public class CatalogScreen extends CatalogScreenBase {
         products.get(0).click();
         return initPage(getDriver(), ProductScreenBase.class);
     }
+
+    @Override
+    public ReviewSubmittedMessageBase clickOneStarReview() {
+        oneStarBtn.click();
+        return initPage(getDriver(), ReviewSubmittedMessageBase.class);
+    }
+
+
 }
