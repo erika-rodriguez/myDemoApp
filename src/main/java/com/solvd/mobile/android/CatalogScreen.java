@@ -154,5 +154,8 @@ public class CatalogScreen extends CatalogScreenBase {
         return initPage(getDriver(), ReviewSubmittedMessageBase.class);
     }
 
-
+    @Override
+    public boolean isProductsTxtPresent() {
+        return productTitle.isElementPresent();
+    }
 }
