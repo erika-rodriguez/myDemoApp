@@ -230,4 +230,13 @@ public class MenuTest implements IAbstractTest {
 
         Assert.assertEquals(product.productAmount(),2,"The Plus button is not Working");
     }
+
+    @Test(description = "[TC22]-testAddPlusItemProduct")
+    public void testAddPlusItemProduct(){
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        ProductScreenBase product=catalog.clickOnProduct();
+        product.clickOnAddItem();
+
+        Assert.assertEquals(product.isItemAdded(), 2);
+    }
 }

@@ -14,9 +14,12 @@ public class ProductScreen extends ProductScreenBase {
     private ExtendedWebElement addToCartBtn;
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/start1IV")
     private ExtendedWebElement oneStarBtn;
+    @FindBy(id = "com.saucelabs.mydemoapp.android:id/plusIV")
+    private ExtendedWebElement addItemIcon;
+    @FindBy(id = "com.saucelabs.mydemoapp.android:id/noTV")
+    private ExtendedWebElement itemsCount;
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/noTV")
     private ExtendedWebElement amount;
-
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/plusIV")
     private ExtendedWebElement plusButton;
 
@@ -28,14 +31,22 @@ public class ProductScreen extends ProductScreenBase {
     public void clickOnAddToCartBtn() {
         addToCartBtn.click();
     }
-
     @Override
     public ReviewSubmittedMessageBase clickOneStarReview() {
         oneStarBtn.click();
         return initPage(getDriver(), ReviewSubmittedMessageBase.class);
     }
+    @Override
+    public void clickOnAddItem() {
+        addItemIcon.click();
+    }
 
     @Override
+    public int isItemAdded() {
+        int amount=Integer.valueOf(itemsCount.getText());
+        return amount;
+    }
+
     public void clickOnPlusButton() {
         plusButton.click();
     }
@@ -46,5 +57,4 @@ public class ProductScreen extends ProductScreenBase {
         int x1= Integer.parseInt(x);
         return x1;
     }
-
 }
