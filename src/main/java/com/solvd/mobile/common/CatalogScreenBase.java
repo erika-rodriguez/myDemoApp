@@ -31,5 +31,6 @@ public abstract class CatalogScreenBase extends AbstractPage implements IMobileU
     public abstract ProductScreenBase clickOnProduct();
 
     public abstract ReviewSubmittedMessageBase clickOneStarReview();
+    public abstract boolean isProductsTxtPresent();
 
 }
