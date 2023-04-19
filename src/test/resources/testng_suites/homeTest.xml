@@ -5,7 +5,7 @@
 <suite name="ParallelThreads" verbose="1" >
 <test name="MenuSuite">
     <classes>
-        <class name="com.solvd.MenuTest" />
+        <class name="com.solvd.MenuTests" />
 <!--        <methods>-->
 <!--            <include name="testAboutButton" />-->
 <!--        </methods>-->
