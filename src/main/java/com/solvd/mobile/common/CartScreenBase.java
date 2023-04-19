@@ -17,4 +17,7 @@ public abstract class CartScreenBase extends AbstractPage {
     public abstract int calculatorSum();
 
     public abstract boolean isColourSelected();
+    
+    public abstract CatalogScreenBase clickOnGoShoppingBtn();
+
 }

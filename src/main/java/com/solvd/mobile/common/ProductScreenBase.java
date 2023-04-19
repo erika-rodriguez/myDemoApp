@@ -10,8 +10,11 @@ public abstract class ProductScreenBase extends AbstractPage {
     }
     public abstract void clickOnAddToCartBtn();
     public abstract ReviewSubmittedMessageBase clickOneStarReview();
+    public abstract void clickOnAddItem();
+    public abstract int isItemAdded();
     public abstract void clickOnPlusButton();
     public abstract int productAmount();
     public abstract void clickOnBlueSelectionButton();
     public abstract boolean isColorButtonSelected();
+
 }

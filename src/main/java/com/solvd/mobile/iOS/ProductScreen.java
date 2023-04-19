@@ -9,12 +9,22 @@ import org.openqa.selenium.WebDriver;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = ProductScreenBase.class)
 public class ProductScreen extends ProductScreenBase {
-    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"Add To Cart\"`]")
+   
+   @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"Add To Cart\"`]")
     private ExtendedWebElement addToCartBtn;
+    
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"StarSelected Icons\"`][1]")
     private ExtendedWebElement oneStarBtn;
+    
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"AddPlus Icons\"`]")
+    private ExtendedWebElement addItemIcon;
+    
+    @ExtendedFindBy(accessibilityId = "Amount")
+    private ExtendedWebElement itemsCount;
+    
     @ExtendedFindBy(iosPredicate = "label == \"AddPlus Icons\"")
     private ExtendedWebElement plusButton;
+    
     @ExtendedFindBy(iosPredicate = "name == \"Amount\"")
     private ExtendedWebElement amount;
 
@@ -37,6 +47,10 @@ public class ProductScreen extends ProductScreenBase {
     }
 
     @Override
+    public void clickOnAddItem() {
+        addItemIcon.click();
+    }
+
     public void clickOnPlusButton() {
         plusButton.click();
     }
@@ -58,5 +72,10 @@ public class ProductScreen extends ProductScreenBase {
         return blueButton.isElementPresent();
     }
 
+    @Override
+    public int isItemAdded() {
+        int amount=Integer.valueOf(itemsCount.getText());
+        return amount;
+    }
 
 }

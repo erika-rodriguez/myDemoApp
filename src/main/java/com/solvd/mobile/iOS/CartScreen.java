@@ -1,9 +1,9 @@
 package com.solvd.mobile.iOS;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.annotations.Predicate;
 import com.qaprosoft.carina.core.foundation.webdriver.locator.ExtendedFindBy;
 import com.solvd.mobile.common.CartScreenBase;
+import com.solvd.mobile.common.CatalogScreenBase;
 import com.solvd.mobile.common.NoItemScreenBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
@@ -34,6 +34,9 @@ public class CartScreen extends CartScreenBase {
 
     @ExtendedFindBy(iosPredicate = "label == \"Blue\"")
     private ExtendedWebElement blueColor;
+
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"Go Shopping\"`]")
+    private ExtendedWebElement goShoppingBtn;
 
     @Override
     public NoItemScreenBase clickOnRemove() {
@@ -68,6 +71,12 @@ public class CartScreen extends CartScreenBase {
     @Override
     public boolean isColourSelected() {
         return blueColor.isElementPresent();
+    }
+    
+    @Override
+    public CatalogScreenBase clickOnGoShoppingBtn() {
+        goShoppingBtn.click();
+        return initPage(getDriver(),CatalogScreenBase.class);
     }
 
 }

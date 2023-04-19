@@ -253,4 +253,21 @@ public class MenuTest implements IAbstractTest {
 
         Assert.assertTrue(cart.isColourSelected(), "The Blue button is not working");
     }
+
+    @Test(description = "[TC22]-testAddPlusItemProduct")
+    public void testAddPlusItemProduct(){
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        ProductScreenBase product=catalog.clickOnProduct();
+        product.clickOnAddItem();
+
+        Assert.assertEquals(product.isItemAdded(), 2);
+    }
+    @Test(description = "[TC25]-testGoShoppingBtn")
+    public void testGoShoppingBtn(){
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        CartScreenBase cart=catalog.clickOnCart();
+        catalog=cart.clickOnGoShoppingBtn();
+
+        Assert.assertTrue(catalog.isProductsTxtPresent(),"GoShopping button did not work.");
+    }
 }

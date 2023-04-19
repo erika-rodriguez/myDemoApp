@@ -2,6 +2,7 @@ package com.solvd.mobile.android;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.solvd.mobile.common.CartScreenBase;
+import com.solvd.mobile.common.CatalogScreenBase;
 import com.solvd.mobile.common.NoItemScreenBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
@@ -23,6 +24,8 @@ public class CartScreen extends CartScreenBase {
 
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/noTV")
     private ExtendedWebElement productAmount;
+    @FindBy(id = "com.saucelabs.mydemoapp.android:id/shoppingBt")
+    private ExtendedWebElement goShoppingBtn;
 
     public CartScreen(WebDriver driver) {
         super(driver);
@@ -62,6 +65,13 @@ public class CartScreen extends CartScreenBase {
     public boolean isColourSelected() {
         //Only works on iOS
         return false;
+    }
+    
+    @Override
+    public CatalogScreenBase clickOnGoShoppingBtn() {
+        goShoppingBtn.click();
+        return initPage(getDriver(),CatalogScreenBase.class);
+
     }
 
 }
