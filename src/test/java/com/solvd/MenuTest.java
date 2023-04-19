@@ -212,4 +212,13 @@ public class MenuTest implements IAbstractTest {
 
         Assert.assertTrue(reviewMessage.isReviewSubmitted(),"The review was not submitted.");
     }
+
+    @Test(description = "[TC22]-testAddPlusItemProduct")
+    public void testAddPlusItemProduct(){
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        ProductScreenBase product=catalog.clickOnProduct();
+        product.clickOnAddItem();
+
+        Assert.assertEquals(product.isItemAdded(), 2);
+    }
 }

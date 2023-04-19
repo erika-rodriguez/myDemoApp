@@ -12,9 +12,12 @@ import org.openqa.selenium.support.FindBy;
 public class ProductScreen extends ProductScreenBase {
     @ExtendedFindBy(text = "Add to cart")
     private ExtendedWebElement addToCartBtn;
-
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/start1IV")
     private ExtendedWebElement oneStarBtn;
+    @FindBy(id = "com.saucelabs.mydemoapp.android:id/plusIV")
+    private ExtendedWebElement addItemIcon;
+    @FindBy(id = "com.saucelabs.mydemoapp.android:id/noTV")
+    private ExtendedWebElement itemsCount;
     public ProductScreen(WebDriver driver) {
         super(driver);
     }
@@ -22,11 +25,19 @@ public class ProductScreen extends ProductScreenBase {
     public void clickOnAddToCartBtn() {
         addToCartBtn.click();
     }
-
     @Override
     public ReviewSubmittedMessageBase clickOneStarReview() {
         oneStarBtn.click();
         return initPage(getDriver(), ReviewSubmittedMessageBase.class);
     }
+    @Override
+    public void clickOnAddItem() {
+        addItemIcon.click();
+    }
 
+    @Override
+    public int isItemAdded() {
+        int amount=Integer.valueOf(itemsCount.getText());
+        return amount;
+    }
 }

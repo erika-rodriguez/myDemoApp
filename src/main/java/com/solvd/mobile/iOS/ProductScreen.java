@@ -13,6 +13,10 @@ public class ProductScreen extends ProductScreenBase{
     private ExtendedWebElement addToCartBtn;
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"StarSelected Icons\"`][1]")
     private ExtendedWebElement oneStarBtn;
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"AddPlus Icons\"`]")
+    private ExtendedWebElement addItemIcon;
+    @ExtendedFindBy(accessibilityId = "Amount")
+    private ExtendedWebElement itemsCount;
 
     public ProductScreen(WebDriver driver) {
         super(driver);
@@ -28,5 +32,14 @@ public class ProductScreen extends ProductScreenBase{
         return initPage(getDriver(), ReviewSubmittedMessageBase.class);
     }
 
+    @Override
+    public void clickOnAddItem() {
+        addItemIcon.click();
+    }
 
+    @Override
+    public int isItemAdded() {
+        int amount=Integer.valueOf(itemsCount.getText());
+        return amount;
+    }
 }
