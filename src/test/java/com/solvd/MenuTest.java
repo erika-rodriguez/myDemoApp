@@ -33,13 +33,13 @@ public class MenuTest implements IAbstractTest {
     public void testQRScannerButton() throws Exception {
         LOGGER.info("Artifact's folder: {}", ReportContext.getArtifactsFolder().getAbsolutePath());
         LOGGER.info("Directory project : {}", ReportContext.getTestDir().getName());
-
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
         byte[] screenShot4 = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
         Screenshot.upload(screenShot4, null);
         MenuScreenBase menu = catalog.clickOnMenu();
         LOGGER.info("This is another logger info");
         QRCodeScreenBase qr = menu.clickOnQRCodeButton();
+
         Assert.assertTrue(qr.isQRCodeTxtVisible(), "The QR Screen is not opened");
     }
 
@@ -83,11 +83,10 @@ public class MenuTest implements IAbstractTest {
     @Test(description = "[TC07]-testFaceIdButton - iOS")
     public void testFaceIdButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
-
         MenuScreenBase menu = catalog.clickOnMenu();
         FaceIdScreenBase faceIdScreen = menu.clickOnFaceIDButton();
-        Assert.assertTrue(faceIdScreen.isFaceIdScreenOpened(), "The button FaceId does not Work");
 
+        Assert.assertTrue(faceIdScreen.isFaceIdScreenOpened(), "The button FaceId does not Work");
     }
 
 
@@ -98,7 +97,6 @@ public class MenuTest implements IAbstractTest {
         LoginScreenBase login = menu.clickOnLoginButton();
 
         Assert.assertTrue(login.isLoginTxtPresent(), "The Login button does not work");
-
     }
 
     @Test(description = "[TC10]-testLogin")
@@ -145,27 +143,24 @@ public class MenuTest implements IAbstractTest {
         CatalogScreenBase sortedCatalog = sortingOptions.clickOnPriceAscendingOrder();
 
         Assert.assertTrue(sortedCatalog.isCatalogAscendingSorted(), "The catalog is not sorted in ascending order.");
-
     }
 
     @Test(description = "[TC13]-testDescendingPriceOrder")
     public void testDescendingPriceOrder() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
         SortingScreenBase sortingOptions = catalog.clickOnSortingItem();
-
         CatalogScreenBase sortedCatalog = sortingOptions.clickOnPriceDescendingOrder();
+
         Assert.assertTrue(sortedCatalog.isCatalogDescendingSorted(), "The catalog is not sorted in descending order.");
     }
 
     @Test(description = "[TC-15]-testAscendingNameButton")
     public void testAscendingNameButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
-
         SortingScreenBase sortingOptions = catalog.clickOnSortingItem();
         sortingOptions.clickOnNameAscendingOption();
 
         Assert.assertTrue(catalog.isAscendingNameSorted(), "The catalog is not sorted in ascending order.");
-
     }
 
     @Test(description = "[TC12]-testDescendingNameOrder")
@@ -177,24 +172,34 @@ public class MenuTest implements IAbstractTest {
         Assert.assertTrue(sortedCatalog.isCatalogDescendingNameSorted(), "Catalog's names are not sorted in descending order.");
     }
 
-    @Test(description = "[TC17]-testRemoveProductFromCartButton",dependsOnMethods = "testAddProductToCart")
+    @Test(description = "[TC17]-testRemoveProductFromCartButton", dependsOnMethods = "testAddProductToCart")
     public void testRemoveProductFromCartButton() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
         CartScreenBase product = catalog.clickOnCart();
         NoItemScreenBase noItemScreenBase = product.clickOnRemove();
-        Assert.assertTrue(noItemScreenBase.isElementPresent(),"The product was not deleted");
 
-
+        Assert.assertTrue(noItemScreenBase.isElementPresent(), "The product was not deleted");
     }
 
     @Test(description = "[TC16]-testAddProductToCart")
-    public void testAddProductToCart(){
+    public void testAddProductToCart() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
-        ProductScreenBase product=catalog.clickOnProduct();
+        ProductScreenBase product = catalog.clickOnProduct();
         product.clickOnAddToCartBtn();
-        CartScreenBase cart= catalog.clickOnCart();
+        CartScreenBase cart = catalog.clickOnCart();
 
-        Assert.assertTrue(cart.isProductAdded(),"The product was not added to the cart.");
+        Assert.assertTrue(cart.isProductAdded(), "The product was not added to the cart.");
     }
 
+    @Test(description = "[TC18]-testCalculatorOnCart")
+    public void testCalculatorOnCart() {
+        //As a precondition the cart must be empty
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        ProductScreenBase product = catalog.clickOnProduct();
+        product.clickOnAddToCartBtn();
+        CartScreenBase cart = catalog.clickOnCart();
+        cart.clickOnPlusButton();
+
+        Assert.assertEquals(cart.calculatorSum(),5998,"The Calculator is not working");
+    }
 }
