@@ -2,7 +2,6 @@ package com.solvd.mobile.iOS;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.foundation.webdriver.locator.ExtendedFindBy;
-import com.solvd.mobile.common.CartScreenBase;
 import com.solvd.mobile.common.*;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
@@ -13,19 +12,21 @@ import java.util.stream.Collectors;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = CatalogScreenBase.class)
 public class CatalogScreen extends CatalogScreenBase {
+
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`name == \"More-tab-item\"`]")
     private ExtendedWebElement menuBtn;
+
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"Products\"`]")
     private ExtendedWebElement products;
+
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"Button\"`]")
     private ExtendedWebElement sortingOrderButton;
+
     @FindBy(xpath = "//*[contains(@name, '$')]")
     private List<ExtendedWebElement> price;
+
     @FindBy(xpath = "//*[contains(@name, 'Sauce Lab')]")
     private List<ExtendedWebElement> name;
-
-//    @FindBy(xpath = "//*[contains(@name, 'ProductItem')]")
-//    private List<ExtendedWebElement> productList;
 
     @FindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, 'Sauce')]")
     private List<ExtendedWebElement>  namesList;
