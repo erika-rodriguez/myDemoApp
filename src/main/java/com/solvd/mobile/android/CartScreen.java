@@ -24,6 +24,8 @@ public class CartScreen extends CartScreenBase {
 
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/noTV")
     private ExtendedWebElement productAmount;
+    @FindBy(id = "com.saucelabs.mydemoapp.android:id/shoppingBt")
+    private ExtendedWebElement goShoppingBtn;
 
     public CartScreen(WebDriver driver) {
         super(driver);
@@ -61,7 +63,8 @@ public class CartScreen extends CartScreenBase {
 
     @Override
     public CatalogScreenBase clickOnGoShoppingBtn() {
-        return null;
+        goShoppingBtn.click();
+        return initPage(getDriver(),CatalogScreenBase.class);
     }
 
 }
