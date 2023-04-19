@@ -14,4 +14,7 @@ public abstract class ProductScreenBase extends AbstractPage {
     public abstract int isItemAdded();
     public abstract void clickOnPlusButton();
     public abstract int productAmount();
+    public abstract void clickOnBlueSelectionButton();
+    public abstract boolean isColorButtonSelected();
+
 }

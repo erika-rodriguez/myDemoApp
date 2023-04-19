@@ -4,6 +4,7 @@ import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.dataprovider.annotations.CsvDataSourceParameters;
 import com.solvd.mobile.common.*;
 import com.zebrunner.agent.core.annotation.Maintainer;
+import com.zebrunner.agent.core.annotation.TestLabel;
 import com.zebrunner.agent.core.registrar.Screenshot;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.report.ReportContext;
@@ -228,7 +229,29 @@ public class MenuTest implements IAbstractTest {
         ProductScreenBase product = catalog.clickOnProduct();
         product.clickOnPlusButton();
 
-        Assert.assertEquals(product.productAmount(),2,"The Plus button is not Working");
+        Assert.assertEquals(product.productAmount(), 2, "The Plus button is not Working");
+    }
+
+    @Test(description = "[TC23]-testSelectColorButton")
+    @TestLabel(name = "testSelectColorButton", value = {"Mobile", "Android"})
+    public void testSelectColorButtonAndroid() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        ProductScreenBase product = catalog.clickOnProduct();
+        product.clickOnBlueSelectionButton();
+
+        Assert.assertTrue(product.isColorButtonSelected(), "The Blue button is not working");
+    }
+
+    @Test(description = "[TC24]-testSelectColorButton-iOS")
+    @TestLabel(name = "testSelectColorButton", value = {"Mobile", "iOS"})
+    public void testSelectColorButton_iOS() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        ProductScreenBase product = catalog.clickOnProduct();
+        product.clickOnBlueSelectionButton();
+        product.clickOnAddToCartBtn();
+        CartScreenBase cart = catalog.clickOnCart();
+
+        Assert.assertTrue(cart.isColourSelected(), "The Blue button is not working");
     }
 
     @Test(description = "[TC22]-testAddPlusItemProduct")

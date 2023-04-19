@@ -62,9 +62,16 @@ public class CartScreen extends CartScreenBase {
     }
 
     @Override
+    public boolean isColourSelected() {
+        //Only works on iOS
+        return false;
+    }
+    
+    @Override
     public CatalogScreenBase clickOnGoShoppingBtn() {
         goShoppingBtn.click();
         return initPage(getDriver(),CatalogScreenBase.class);
+
     }
 
 }

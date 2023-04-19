@@ -9,18 +9,27 @@ import org.openqa.selenium.WebDriver;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = ProductScreenBase.class)
 public class ProductScreen extends ProductScreenBase {
-    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"Add To Cart\"`]")
+   
+   @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"Add To Cart\"`]")
     private ExtendedWebElement addToCartBtn;
+    
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"StarSelected Icons\"`][1]")
     private ExtendedWebElement oneStarBtn;
+    
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == \"AddPlus Icons\"`]")
     private ExtendedWebElement addItemIcon;
+    
     @ExtendedFindBy(accessibilityId = "Amount")
     private ExtendedWebElement itemsCount;
+    
     @ExtendedFindBy(iosPredicate = "label == \"AddPlus Icons\"")
     private ExtendedWebElement plusButton;
+    
     @ExtendedFindBy(iosPredicate = "name == \"Amount\"")
     private ExtendedWebElement amount;
+
+    @ExtendedFindBy(iosPredicate = "label == \"BlueColorUnSelected Icons\"")
+    private ExtendedWebElement blueButton;
 
     public ProductScreen(WebDriver driver) {
         super(driver);
@@ -49,8 +58,18 @@ public class ProductScreen extends ProductScreenBase {
     @Override
     public int productAmount() {
         String x = amount.getText();
-        int x1= Integer.parseInt(x);
+        int x1 = Integer.parseInt(x);
         return x1;
+    }
+
+    @Override
+    public void clickOnBlueSelectionButton() {
+        blueButton.click();
+    }
+
+    @Override
+    public boolean isColorButtonSelected() {
+        return blueButton.isElementPresent();
     }
 
     @Override
@@ -58,4 +77,5 @@ public class ProductScreen extends ProductScreenBase {
         int amount=Integer.valueOf(itemsCount.getText());
         return amount;
     }
+
 }

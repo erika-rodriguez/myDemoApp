@@ -22,6 +22,11 @@ public class ProductScreen extends ProductScreenBase {
     private ExtendedWebElement amount;
     @FindBy(id = "com.saucelabs.mydemoapp.android:id/plusIV")
     private ExtendedWebElement plusButton;
+   @FindBy(xpath = "//android.widget.ImageView[@content-desc=\"Blue color\"]")
+    private ExtendedWebElement blueButton;
+
+    @FindBy(id = "com.saucelabs.mydemoapp.android:id/aroundIV")
+    private ExtendedWebElement aroundColor;
 
     public ProductScreen(WebDriver driver) {
         super(driver);
@@ -54,7 +59,18 @@ public class ProductScreen extends ProductScreenBase {
     @Override
     public int productAmount() {
         String x = amount.getText();
-        int x1= Integer.parseInt(x);
+        int x1 = Integer.parseInt(x);
         return x1;
     }
+
+    @Override
+    public void clickOnBlueSelectionButton() {
+        blueButton.click();
+    }
+
+    @Override
+    public boolean isColorButtonSelected() {
+        return aroundColor.isElementPresent();
+    }
+
 }

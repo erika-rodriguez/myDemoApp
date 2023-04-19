@@ -32,6 +32,9 @@ public class CartScreen extends CartScreenBase {
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"2\"`][1]")
     private ExtendedWebElement productAmount;
 
+    @ExtendedFindBy(iosPredicate = "label == \"Blue\"")
+    private ExtendedWebElement blueColor;
+
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"Go Shopping\"`]")
     private ExtendedWebElement goShoppingBtn;
 
@@ -66,10 +69,14 @@ public class CartScreen extends CartScreenBase {
     }
 
     @Override
+    public boolean isColourSelected() {
+        return blueColor.isElementPresent();
+    }
+    
+    @Override
     public CatalogScreenBase clickOnGoShoppingBtn() {
         goShoppingBtn.click();
         return initPage(getDriver(),CatalogScreenBase.class);
     }
-
 
 }
