@@ -210,6 +210,6 @@ public class MenuTest implements IAbstractTest {
         ProductScreenBase product=catalog.clickOnProduct();
         ReviewSubmittedMessageBase reviewMessage=product.clickOneStarReview();
 
-        Assert.assertTrue(reviewMessage.isReviewSubmitted());
+        Assert.assertTrue(reviewMessage.isReviewSubmitted(),"The review was not submitted.");
     }
 }
