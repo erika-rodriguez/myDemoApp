@@ -33,6 +33,10 @@ public class CatalogScreen extends CatalogScreenBase {
     @FindBy(xpath = "//*[contains(@content-desc, 'Sauce Lab')]")
     private List<ExtendedWebElement> products;
 
+    @FindBy(xpath = "//*[@resource-id='com.saucelabs.mydemoapp.android:id/start1IV']")
+    private ExtendedWebElement oneStarBtn;
+
+
 
 //    @FindBy(id = "com.saucelabs.mydemoapp.android:id/cartIV")
 //    private ExtendedWebElement cartIcon;
@@ -148,4 +152,12 @@ public class CatalogScreen extends CatalogScreenBase {
         products.get(0).click();
         return initPage(getDriver(), ProductScreenBase.class);
     }
+
+    @Override
+    public ReviewSubmittedMessageBase clickOneStarReview() {
+        oneStarBtn.click();
+        return initPage(getDriver(), ReviewSubmittedMessageBase.class);
+    }
+
+
 }

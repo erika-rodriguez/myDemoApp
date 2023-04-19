@@ -196,5 +196,20 @@ public class MenuTest implements IAbstractTest {
 
         Assert.assertTrue(cart.isProductAdded(),"The product was not added to the cart.");
     }
+    @Test(description = "[TC19]-testSubmitReviewOnCatalog")
+    public void testSubmitReviewOnCatalog(){
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        ReviewSubmittedMessageBase reviewMessage=catalog.clickOneStarReview();
 
+        Assert.assertTrue(reviewMessage.isReviewSubmitted(),"The review was not submitted.");
+    }
+
+    @Test(description = "[TC20]-testSubmitReviewOnProduct")
+    public void testSubmitReviewOnProduct(){
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        ProductScreenBase product=catalog.clickOnProduct();
+        ReviewSubmittedMessageBase reviewMessage=product.clickOneStarReview();
+
+        Assert.assertTrue(reviewMessage.isReviewSubmitted(),"The review was not submitted.");
+    }
 }

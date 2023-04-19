@@ -9,6 +9,7 @@ public abstract class ProductScreenBase extends AbstractPage {
         super(driver);
     }
     public abstract void clickOnAddToCartBtn();
+    public abstract ReviewSubmittedMessageBase clickOneStarReview();
 
 
 
