@@ -4,6 +4,7 @@ import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.dataprovider.annotations.CsvDataSourceParameters;
 import com.solvd.mobile.common.*;
 import com.zebrunner.agent.core.annotation.Maintainer;
+import com.zebrunner.agent.core.annotation.TestLabel;
 import com.zebrunner.agent.core.registrar.Screenshot;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.report.ReportContext;
@@ -190,12 +191,13 @@ public class MenuTest implements IAbstractTest {
 
         Assert.assertTrue(cart.isProductAdded(), "The product was not added to the cart.");
     }
-    @Test(description = "[TC19]-testSubmitReviewOnCatalog")
-    public void testSubmitReviewOnCatalog(){
-        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
-        ReviewSubmittedMessageBase reviewMessage=catalog.clickOneStarReview();
 
-        Assert.assertTrue(reviewMessage.isReviewSubmitted(),"The review was not submitted.");
+    @Test(description = "[TC19]-testSubmitReviewOnCatalog")
+    public void testSubmitReviewOnCatalog() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        ReviewSubmittedMessageBase reviewMessage = catalog.clickOneStarReview();
+
+        Assert.assertTrue(reviewMessage.isReviewSubmitted(), "The review was not submitted.");
     }
 
     @Test(description = "[TC18]-testCalculatorOnCart")
@@ -207,17 +209,48 @@ public class MenuTest implements IAbstractTest {
         CartScreenBase cart = catalog.clickOnCart();
         cart.clickOnPlusButton();
 
-        Assert.assertEquals(cart.calculatorSum(),5998,"The Calculator is not working");
-        
-     }
+        Assert.assertEquals(cart.calculatorSum(), 5998, "The Calculator is not working");
+
+    }
 
     @Test(description = "[TC20]-testSubmitReviewOnProduct")
-    public void testSubmitReviewOnProduct(){
+    public void testSubmitReviewOnProduct() {
         CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
-        ProductScreenBase product=catalog.clickOnProduct();
-        ReviewSubmittedMessageBase reviewMessage=product.clickOneStarReview();
+        ProductScreenBase product = catalog.clickOnProduct();
+        ReviewSubmittedMessageBase reviewMessage = product.clickOneStarReview();
 
-        Assert.assertTrue(reviewMessage.isReviewSubmitted(),"The review was not submitted.");
+        Assert.assertTrue(reviewMessage.isReviewSubmitted(), "The review was not submitted.");
 
+    }
+
+    @Test(description = "[TC21]-testMinusButton")
+    public void testMinusButton() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        ProductScreenBase product = catalog.clickOnProduct();
+        product.clickOnPlusButton();
+
+        Assert.assertEquals(product.productAmount(), 2, "The Plus button is not Working");
+    }
+
+    @Test(description = "[TC23]-testSelectColorButton")
+    @TestLabel(name = "testSelectColorButton", value = {"Mobile", "Android"})
+    public void testSelectColorButtonAndroid() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        ProductScreenBase product = catalog.clickOnProduct();
+        product.clickOnBlueSelectionButton();
+
+        Assert.assertTrue(product.isColorButtonSelected(), "The Blue button is not working");
+    }
+
+    @Test(description = "[TC24]-testSelectColorButton-iOS")
+    @TestLabel(name = "testSelectColorButton", value = {"Mobile", "iOS"})
+    public void testSelectColorButton_iOS() {
+        CatalogScreenBase catalog = initPage(getDriver(), CatalogScreenBase.class);
+        ProductScreenBase product = catalog.clickOnProduct();
+        product.clickOnBlueSelectionButton();
+        product.clickOnAddToCartBtn();
+        CartScreenBase cart = catalog.clickOnCart();
+
+        Assert.assertTrue(cart.isColourSelected(), "The Blue button is not working");
     }
 }

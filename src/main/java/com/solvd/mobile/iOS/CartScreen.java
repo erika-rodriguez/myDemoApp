@@ -32,6 +32,9 @@ public class CartScreen extends CartScreenBase {
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"2\"`][1]")
     private ExtendedWebElement productAmount;
 
+    @ExtendedFindBy(iosPredicate = "label == \"Blue\"")
+    private ExtendedWebElement blueColor;
+
     @Override
     public NoItemScreenBase clickOnRemove() {
         removeButton.click();
@@ -62,5 +65,9 @@ public class CartScreen extends CartScreenBase {
         return price*amount;
     }
 
+    @Override
+    public boolean isColourSelected() {
+        return blueColor.isElementPresent();
+    }
 
 }

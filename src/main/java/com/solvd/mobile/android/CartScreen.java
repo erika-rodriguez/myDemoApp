@@ -58,4 +58,10 @@ public class CartScreen extends CartScreenBase {
         return price*amount;
     }
 
+    @Override
+    public boolean isColourSelected() {
+        //Only works on iOS
+        return false;
+    }
+
 }

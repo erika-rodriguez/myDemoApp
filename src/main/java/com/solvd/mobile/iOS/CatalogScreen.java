@@ -24,6 +24,9 @@ public class CatalogScreen extends CatalogScreenBase {
     @FindBy(xpath = "//*[contains(@name, 'Sauce Lab')]")
     private List<ExtendedWebElement> name;
 
+//    @FindBy(xpath = "//*[contains(@name, 'ProductItem')]")
+//    private List<ExtendedWebElement> productList;
+
     @FindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, 'Sauce')]")
     private List<ExtendedWebElement>  namesList;
 
