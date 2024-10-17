@@ -26,11 +26,10 @@ hs_err_pid*
 /shelf/
 /workspace.xml
 /resources/
-_config.properties
-_testdata.properties
+
 .idea
 .settings
 /target/
 /reports/
-src/main/resources/_config.properties
+
 /videos/
